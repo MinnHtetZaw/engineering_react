@@ -61,14 +61,22 @@ const getProducts = async()=>{
    
   }
 
+  // const MinusQty = (id) =>{
 
-  const PlusQty =(id)=>{
-    return 
-  }
+  //   getSelectedProduct((prev) => {
+  //     let newData = [...prev]
+  //     prev[index].qty++                               
+  //     return newData
+  //   })
+  // }
+  // const PlusQty = (id) =>{
 
-  const MinusQty = (id) =>{
-    return selectedProducts.map((el)=>el.id === id && el.qyt -= 1)
-  }
+  //   getSelectedProduct((prev) => {
+  //     let newData = [...prev]
+  //     prev[index].qty++                               
+  //     return newData
+  //   })
+  // }
 
   return (
 <>
@@ -115,6 +123,8 @@ const getProducts = async()=>{
 
                 <div className="card">
                     <div className="card-body">
+                    <div className="table-responsive">
+
                     <table className="table table-striped">
                         <thead className="text-center">
                             <tr>
@@ -122,7 +132,7 @@ const getProducts = async()=>{
                             <th>Brand</th>
                             <th>Category</th>
                             <th>SubCategory</th>
-                            <th>Stock Quantity</th>
+                            <th className='text-nowrap'>Stock Quantity</th>
                             <th>Action</th>
                             </tr>
                           
@@ -143,13 +153,22 @@ const getProducts = async()=>{
                               <td>{selected.brand}</td>
                               <td>{selected.category}</td>
                               <td>{selected.subcategory}</td>
-                              <td><Minus className='me-1' fontSize='small' color="primary" onClick={()=>MinusQty(selected.id)}/>{selected.qty}<Plus className='ms-1' fontSize='small' color="primary" onClick={()=>PlusQty(selected.id)} /></td>
+                              <td><Minus className='me-1' fontSize='small' color="primary" onClick={()=>getSelectedProduct((prev) => {
+                                let newData = [...prev]
+                                prev[index].qty--  
+                                return newData
+                              })}/>{selected.qty}<Plus className='ms-1' fontSize='small' color="primary" onClick={()=>getSelectedProduct((prev) => {
+                                let newData = [...prev]
+                                prev[index].qty++  
+                                return newData
+                              })} /></td>
                               <td></td>
                             </tr>
                           ))}
 
                         </tbody>
                     </table>
+                    </div>
                     </div>
                
 
