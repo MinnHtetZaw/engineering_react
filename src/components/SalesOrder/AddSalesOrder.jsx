@@ -3,20 +3,26 @@ import Nav from '../Sidebar/Nav'
 import { api } from '../../api/apiResource'
 import AddSaleProduct from './AddSaleProduct'
 import { Minus, Plus } from '../Icons'
+import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
 
 const AddSalesOrder = () => {
 
     const [projects,setProjects] = useState([])
     const [phases,setPhases]= useState([])
+    const [project_id,setProjectID]=useState('')
     const [phase_id,getPhase]=useState(0)
     const [date,setDeliveryDate]=useState('')
     const [products,setProducts]=useState([])
     const [selectedProducts,getSelectedProduct]=useState([])
+    const nav = useNavigate()
 
   useEffect(()=>{
     getProject()
     getProducts()
   },[])  
+
+ 
 
   const getProject = async()=>{
     try{
@@ -41,7 +47,9 @@ const getProducts = async()=>{
 }
 
   const getProjectID =(id)=>{
-    projects.map((el)=>el.id === id && setPhases(el.phases) )
+    setProjectID(id)
+    projects.map((el)=>el.id == id && setPhases(el.phases) )
+  
   }
 
   const handleAddProduct =(id)=>{
@@ -61,22 +69,22 @@ const getProducts = async()=>{
    
   }
 
-  // const MinusQty = (id) =>{
-
-  //   getSelectedProduct((prev) => {
-  //     let newData = [...prev]
-  //     prev[index].qty++                               
-  //     return newData
-  //   })
-  // }
-  // const PlusQty = (id) =>{
-
-  //   getSelectedProduct((prev) => {
-  //     let newData = [...prev]
-  //     prev[index].qty++                               
-  //     return newData
-  //   })
-  // }
+ 
+  const saveSaleOrder =(e)=>{
+    e.preventDefault()
+    const data = {
+      project_id : project_id,
+      phase_id: phase_id,
+      delivery_date : date,
+      products : selectedProducts
+     }
+     
+      api.post('sales_order_save',data)
+      .then((res)=>
+      swal("Successfully!",res.data.succes, "success")
+      , nav('/sales_order_list')
+      )
+  }
 
   return (
 <>
@@ -88,11 +96,12 @@ const getProducts = async()=>{
       <div className="card-header bg-primary text-center">
           <label className="card-title text-white">Sale Order Register</label>
       </div>
-    
+      <form onSubmit={saveSaleOrder}>
           <div className="card-body">
               <div className="form-group my-2">
                   <label>Project</label>
                   <select className="form-control" onChange={(e)=>getProjectID(e.target.value)}>
+                    <option hidden>Choose Project</option>
                     {
                         projects.map((project,index)=>(
                             <option key={index} value={project.id}>{project.name} </option>
@@ -103,6 +112,8 @@ const getProducts = async()=>{
               <div className="form-group my-2">
                   <label>Phase</label>
                   <select className="form-control" onChange={(e)=>getPhase(e.target.value)} >
+                  <option hidden>Choose Phase</option>
+
                     {
                         phases.map((phase,index)=>(
                             <option key={index} value={phase.id}>{phase.phase_name} </option>
@@ -174,15 +185,15 @@ const getProducts = async()=>{
 
                 </div>
                  
-                <div className="mt-3 float-end bg-white">
+                <div className="my-3 float-end bg-white">
                   <button type="submit" className="btn btn-primary btn-submit">Submit</button>
                 </div>
-                    
+                            
                 </div>
               </div>
 
           </div>
-   
+          </form>
     </div>
         
 

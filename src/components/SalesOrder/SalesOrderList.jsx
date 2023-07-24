@@ -29,15 +29,16 @@ const SalesOrderList = () => {
             </Link>
             <table className="table table-striped">
                 <thead className="bg-soft text-light">
-                    <tr>
+                    <tr className='text-center'>
                         <th>#</th>
                         <th>Sale Order No</th>
                         <th>Project Name</th>
+                        <th>Phase Name</th>
                         <th>Delivery Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='text-center'>
                     {orders.length === 0 &&      
                     <tr>
                         <td colSpan="9" className='text-center text-danger'>There is No Orders Yet</td>
@@ -48,9 +49,11 @@ const SalesOrderList = () => {
                         (
                         <tr key={index}>
                             <td>{++index}</td>
-                            <td>{order.order_number}</td>
-                            <td>{order.order_number}</td>
+                            <td>{order.sale_order_no}</td>
+                            <td>{order.project}</td>
+                            <td>{order.phase}</td>
                             <td>{order.delivery_date}</td>
+                            <td></td>
                         </tr>
                         ))
                     }
