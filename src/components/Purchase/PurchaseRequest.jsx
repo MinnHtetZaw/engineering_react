@@ -50,16 +50,20 @@ const PurchaseRequest = () => {
             </div>
         
           {show && (
-              <div className="col-12 mt-4">
+              <div className="col-6 offset-3 mt-4">
 
               <table className="table">
                     <thead className="text-center">
-                        <th>Name</th>
-                        <th>Stock Quantity</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Stock Quantity</th>
+                        </tr>
+                       
                     </thead>
                     <tbody>
                         <tr className='text-center'>
-
+                            <td>{data.product_name}</td>
+                            <td>{data.qty}</td>
                         </tr>
 
                     </tbody>
@@ -68,7 +72,7 @@ const PurchaseRequest = () => {
           ) }
 
             <div className="text-center mt-5">
-                  <button type="submit" className="btn btn-primary btn-submit">Submit</button>
+                  <button className="btn btn-primary btn-submit">Submit</button>
             </div>
              
           </div>
