@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Nav from '../Sidebar/Nav'
 import { api } from '../../api/apiResource'
 import { Link } from 'react-router-dom';
+import SalesOrderDetailDialog from './SalesOrderDetailDialog';
 
 const SalesOrderList = () => {
 
     const [orders,setOrders] = useState([])
+    const [show,setShow] = useState(false)
+    const [products,setProducts] = useState([])
 
     useEffect(()=>{
         const getOrders= async()=>{
@@ -15,6 +18,12 @@ const SalesOrderList = () => {
 
         getOrders()
     },[])
+
+    const  handleDetail =(val)=>{
+        setShow(true)
+        setProducts(val)
+    }
+   
   return (
     <>
     <Nav/>
@@ -53,7 +62,9 @@ const SalesOrderList = () => {
                             <td>{order.project}</td>
                             <td>{order.phase}</td>
                             <td>{order.delivery_date}</td>
-                            <td></td>
+                            <td>
+                            <button className='btn btn-primary btn-sm' onClick={()=>handleDetail(order.products)}>Detail</button>
+                            </td>
                         </tr>
                         ))
                     }
@@ -62,7 +73,7 @@ const SalesOrderList = () => {
             </table>
           </div>    
         </div>
-
+        <SalesOrderDetailDialog open={show} close={()=>setShow(false)} products={products}/>        
     </>
 
   )

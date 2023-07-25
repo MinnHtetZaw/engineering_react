@@ -2,7 +2,7 @@ import { configureStore,combineReducers} from "@reduxjs/toolkit";
 import accountReducer from "./accountRedux";
 import bomReducer from "./bomRedux";
 import grnReducer from "./grnRedux";
-import routeRedux from "./routeRedux";
+import userReducer from "./userRedux"
 
 import {
     persistStore,
@@ -22,7 +22,7 @@ import {
     storage,
   }
 
-  const rootReducer = combineReducers({account: accountReducer, bom: bomReducer, grn: grnReducer,route:routeRedux})
+  const rootReducer = combineReducers({account: accountReducer, bom: bomReducer, grn: grnReducer,user: userReducer})
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 

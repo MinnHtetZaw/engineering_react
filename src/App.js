@@ -42,13 +42,18 @@ import ShowRequestDetail from "./components/Request/ShowRequestDetail";
 import RequestMaterialList from "./components/RequestMaterial/RequestMaterialList";
 import SalesOrderList from "./components/SalesOrder/SalesOrderList";
 import AddSalesOrder from "./components/SalesOrder/AddSalesOrder";
+import Login from "./components/Login/Login";
+import PurchaseRequest from "./components/Purchase/PurchaseRequest";
 
 function App() {
   return (
     <div id="main">
+      
       <Sidebar>
         <Routes>
+           <Route path="/login" element={<Login/>} />
           <Route path="/" element={<DynamicItem page="homepage" />} />
+         
           <Route path="/project_register" element={<ProjectRegister/>}/>
           <Route path="/phase/:id" element={<PhaseList/>}/>
           <Route path="/task/:id" element={<TaskList/>}/>
@@ -100,6 +105,9 @@ function App() {
           <Route path="/request_material_list" element={<RequestMaterialList/>} />
           <Route path="/sales_order_list" element={<SalesOrderList/>} />
           <Route path="/add_sales_order" element={<AddSalesOrder/>}/>
+
+          <Route path="/purchase_request" element={<PurchaseRequest/>}/>
+
           {dummyData &&
             dummyData.map((item, index) => (
               <Route
