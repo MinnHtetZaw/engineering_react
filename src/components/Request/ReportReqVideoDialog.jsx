@@ -18,7 +18,8 @@ const ReportReqVideoDialog = (props) => {
             {
                 props.videos && (
                     props.videos.map((video,i)=>(
-          <div className="col-4">
+                     
+          <div className="col-4" key={i}>
             <video controls width="80%">
             <source src={url+`report_maintenance/video/${video}`} type="video/mp4"/>  
             </video>

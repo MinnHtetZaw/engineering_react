@@ -21,7 +21,7 @@ const SalesOrderDetailDialog = ({open,close,products}) => {
 <DialogContent >
 <Form>
         
-        <div className="row bg-info fw-bold p-2 text-center">
+        <div className="row bg-info fw-bold p-2 text-center rounded">
                 <div className="col-md-1">
                 <span>No</span>
                 </div>
@@ -44,7 +44,7 @@ const SalesOrderDetailDialog = ({open,close,products}) => {
     {
         products.map((product,index)=>(
       
-            <div className="row mb-1 mt-3  text-center" key={index}>
+            <div className="row mb-1 mt-3 text-center" key={index}>
                 <div className="col-md-1">
                     <span>{++index}</span>
                 </div>
