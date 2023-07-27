@@ -37,9 +37,6 @@ const SalesOrderDetailDialog = ({open,close,products}) => {
                 <div className="col-md-2">
                 <span>Request Stock Qty</span>
                 </div>
-                <div className='col-md-2'>
-                    <span>Action</span>
-                </div>
         </div>
     {
         products.map((product,index)=>(
@@ -59,12 +56,6 @@ const SalesOrderDetailDialog = ({open,close,products}) => {
                 </div>
                 <div className="col-md-2 ">
                     <span>{product.qty}</span>
-                </div>
-
-                <div className="col-md-2 ">
-                <Link to='/purchase_request' state={{data :product}}>
-                    <button className='btn btn-primary btn-sm'>Request</button>
-                    </Link>
                 </div>
 
             </div>

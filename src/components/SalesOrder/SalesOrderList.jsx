@@ -3,12 +3,14 @@ import Nav from '../Sidebar/Nav'
 import { api } from '../../api/apiResource'
 import { Link } from 'react-router-dom';
 import SalesOrderDetailDialog from './SalesOrderDetailDialog';
+import StockCheckDialog from './StockCheckDialog';
 
 const SalesOrderList = () => {
 
     const [orders,setOrders] = useState([])
     const [show,setShow] = useState(false)
     const [products,setProducts] = useState([])
+    const [check,setShowCheck]=useState(false)
 
     useEffect(()=>{
         const getOrders= async()=>{
@@ -23,7 +25,10 @@ const SalesOrderList = () => {
         setShow(true)
         setProducts(val)
     }
-   
+   const handleCheck = (val)=>{
+    setShowCheck(true)
+    setProducts(val)
+   }
   return (
     <>
     <Nav/>
@@ -44,7 +49,8 @@ const SalesOrderList = () => {
                         <th>Project Name</th>
                         <th>Phase Name</th>
                         <th>Delivery Date</th>
-                        <th>Action</th>
+                        <th>Product List</th>
+                        <th>Stock Check</th>
                     </tr>
                 </thead>
                 <tbody className='text-center'>
@@ -65,6 +71,9 @@ const SalesOrderList = () => {
                             <td>
                             <button className='btn btn-primary btn-sm' onClick={()=>handleDetail(order.products)}>Detail</button>
                             </td>
+                            <td>
+                            <button className='btn btn-primary btn-sm' onClick={()=>handleCheck(order.products)}>Check</button>
+                            </td>
                         </tr>
                         ))
                     }
@@ -73,7 +82,8 @@ const SalesOrderList = () => {
             </table>
           </div>    
         </div>
-        <SalesOrderDetailDialog open={show} close={()=>setShow(false)} products={products}/>        
+        <SalesOrderDetailDialog open={show} close={()=>setShow(false)} products={products}/>   
+        <StockCheckDialog open={check} close={()=>setShowCheck(false)} products={products}/>     
     </>
 
   )

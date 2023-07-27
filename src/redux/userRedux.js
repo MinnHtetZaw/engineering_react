@@ -3,13 +3,26 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        role : "warehouse"
+        isLogin : false,
+        user : {},
+       
     },
-    // reducers: {
+    reducers: {
+     
+    storeUser:(state,action)=> {
       
+        state.user = action.payload
+        state.isLogin = true
+    },
+
+    LogoutProcess:(state)=>{
+        state.isLogin = false
+        state.user = ''
+        
+    }
       
-    // }
+    }
 })
 
-// export const{addAccount,addAccountOne, resetAccount} = userSlice.actions
+export const{storeUser,LogoutProcess} = userSlice.actions
 export default userSlice.reducer;

@@ -1,32 +1,67 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { Email, Lock } from '../Icons'
+import { api } from '../../api/apiResource'
+import swal from 'sweetalert'
+import { useDispatch } from 'react-redux'
+import { storeUser } from '../../redux/userRedux'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const emailRef =useRef()
+    const passwordRef = useRef()
+    const dispatch = useDispatch()
+    const nav = useNavigate()
+
+  const handleLogin = async (e)=>{
+    e.preventDefault()
+   
+    try{
+        const res = await api.post('login',{
+        email: emailRef.current.value,
+        password: passwordRef.current.value 
+        })
+ 
+      dispatch(storeUser(res.data.employee))
+      
+      swal(
+        'Good',
+        'GoodJob',
+        'success'
+        )
+       
+        nav('/')
+      }
+    catch(error) 
+    {
+             swal(
+              'Oops...',
+                error.response.data,
+              'error'
+              )
+    }
+ 
+  }
   return (
     <>
 
-<div className="login-box">
-
+<div className="d-flex align-items-center justify-content-center vh-100">
+  
   <div className="card">
-    <div className="card-body login-card-body">
-      <p className="login-box-msg"><i className="fas fa-warehouse"></i>&nbsp;&nbsp;Sign in to start your session&nbsp;&nbsp;<i className="fas fa-warehouse"></i></p>
+    <div className="card-body">
+      <p className='text-center'>Sign in to start your session</p>
 
-      <form >
-   
+      <form onSubmit={handleLogin} >
         <div className="input-group mb-3">
-          <input type="email" className="form-control" name="email" placeholder="Email"/>
-          <div className="input-group-append">
-            <div className="input-group-text">
-              <span className="fas fa-envelope"></span>
-            </div>
-          </div>
+          <input type="email" ref={emailRef} className="form-control" name="email" placeholder="Email"/>
+      
+          <span className="input-group-text" id="basic-addon1"> <Email/></span>   
+        
         </div>
         <div className="input-group mb-3">
-          <input type="password" className="form-control" name="password" placeholder="Password"/>
-          <div className="input-group-append">
-            <div className="input-group-text">
-              <span className="fas fa-lock"></span>
-            </div>
-          </div>
+          <input type="password" ref={passwordRef} className="form-control" name="password" placeholder="Password"/>
+          <span className="input-group-text" id="basic-addon1"> <Lock/></span>   
+       
         </div>
         <div className="row">
           <div className="col-8">

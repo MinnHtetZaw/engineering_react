@@ -26,7 +26,9 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export {
   ApartmentIcon as BuildingIcon,
@@ -54,5 +56,8 @@ export {
   VisibilityIcon as EyeIcon,
   FormatListNumberedIcon as ListIcon,
   AddCircleIcon as Plus,
-  RemoveCircleIcon as Minus
+  RemoveCircleIcon as Minus,
+  EmailIcon as Email,
+  LockIcon as Lock,
+  LogoutIcon
 };

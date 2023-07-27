@@ -9,6 +9,7 @@ import "../../App.css";
 import { DeleteIcon, EditIcon, AddIcon, DetailIcon, EyeIcon } from "../Icons";
 import ShowItem from "./ShowItem";
 import { api } from './../../api/apiResource';
+import { url } from "../../api/urlResource";
 
 const ButtonB = styled.button`
   margin-right: 10px;
@@ -156,7 +157,7 @@ const Products = () => {
                             <td className="p-2 text-center ff bod-li">
                               <img
                                 className="img"
-                                src={`http://localhost:8000/images/${product.product_img}`}
+                                src={url+`images/${product.product_img}`}
                                 alt="Product Image"
                               />
                             </td>

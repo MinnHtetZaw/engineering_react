@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { LogoutProcess } from "../../redux/userRedux"
+import { Link, useNavigate } from "react-router-dom";
 import {
   ItemsList,
   ItemContainer,
@@ -12,14 +13,16 @@ import {
   UserIcon,
   BuildingIcon,
   CostCenterIcon,
+  LogoutIcon
   // ProductIcon,
   // BrandIcon,
   // CategoryIcon,
 } from "../Icons";
-
 import { dummyData } from "..";
 
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+
 
 const SubItemName = styled.span`
   margin-left: 30px;
@@ -28,10 +31,19 @@ const SubItemName = styled.span`
 const SidebarItems = ({ displaySidebar }) => {
   const [activeItem, setActiveItem] = useState(0);
   const [showSub, setShowSub] = useState(false);
+  const dispatch = useDispatch()
+  const nav = useNavigate()
 
   const show_sub = () => {
     setShowSub(!showSub);
   };
+
+  const Logout =()=>{
+   
+    dispatch(LogoutProcess())
+    nav('/login')
+  }
+
   return (
     <div className="fix">
       <ItemsList>
@@ -222,6 +234,14 @@ const SidebarItems = ({ displaySidebar }) => {
               <ItemName displaySidebar={displaySidebar}>Sales Order</ItemName>
             </ItemWrapper>
           </Link>
+        </ItemContainer>
+        <ItemContainer>
+         
+            <ItemWrapper>
+              <LogoutIcon />
+              <ItemName displaySidebar={displaySidebar} onClick={Logout}>Logout</ItemName>
+            </ItemWrapper>
+         
         </ItemContainer>
       </ItemsList>
     </div>
