@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../Sidebar/Nav'
 import { api } from '../../api/apiResource'
 import AddSaleProduct from './AddSaleProduct'

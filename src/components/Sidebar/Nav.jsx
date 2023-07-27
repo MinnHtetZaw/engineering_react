@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowBackIcon } from "../Icons";
-import { HomeIcon } from "../Icons";
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -21,7 +20,6 @@ const Span = styled.span`
 `;
 
 const Nav = (props) => {
-  const {page} = props;
   const navigate =useNavigate();
   
   const back=()=>{

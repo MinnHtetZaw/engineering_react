@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import Nav from '../Sidebar/Nav';
 import swal from 'sweetalert';

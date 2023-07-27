@@ -21,7 +21,7 @@ import {
 import { dummyData } from "..";
 
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const SubItemName = styled.span`
@@ -31,6 +31,8 @@ const SubItemName = styled.span`
 const SidebarItems = ({ displaySidebar }) => {
   const [activeItem, setActiveItem] = useState(0);
   const [showSub, setShowSub] = useState(false);
+  const role = useSelector(state=>state.user.user.role.role)
+
   const dispatch = useDispatch()
   const nav = useNavigate()
 
@@ -227,7 +229,9 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
-        <ItemContainer>
+        {
+          role == 'Warehouse Supervisor' &&
+          <ItemContainer>
           <Link className="no_underline" to="/sales_order_list">
             <ItemWrapper>
               <UserIcon />
@@ -235,6 +239,8 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+        }
+       
         <ItemContainer>
          
             <ItemWrapper>
