@@ -58,7 +58,6 @@ function App() {
 
     isLogin === false && 
     nav('/login')
-    console.log(location.pathname);
   },[location.pathname])
 
   return (
@@ -70,7 +69,7 @@ function App() {
        
        <Route path="/login" element={<Login/>} />
        <Route path="/" element={<DynamicItem page="homepage" />} />
-        
+
        <Route path="/project_register" element={<ProjectRegister/>}/>
        <Route path="/phase/:id" element={<PhaseList/>}/>
        <Route path="/task/:id" element={<TaskList/>}/>
