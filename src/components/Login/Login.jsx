@@ -5,6 +5,15 @@ import swal from 'sweetalert'
 import { useDispatch } from 'react-redux'
 import { storeUser } from '../../redux/userRedux'
 import { useNavigate } from 'react-router-dom'
+import background from "../../images/background.jpg"
+import styled from 'styled-components'
+
+
+const Background = styled.div`
+    background-image: url(${background});
+   
+`
+
 
 const Login = () => {
 
@@ -44,15 +53,16 @@ const Login = () => {
   }
   return (
     <>
+<Background >
 
-<div className="d-flex align-items-center justify-content-center vh-100">
+<div className="d-flex align-items-center justify-content-center vh-100" >
   
-  <div className="card">
+  <div className="card col-3">
     <div className="card-body">
-      <p className='text-center'>Sign in to start your session</p>
+      <h5 className='text-center p-3 fst-italic'>Sign in to start your session</h5>
 
       <form onSubmit={handleLogin} >
-        <div className="input-group mb-3">
+        <div className="input-group my-3">
           <input type="email" ref={emailRef} className="form-control" name="email" placeholder="Email"/>
       
           <span className="input-group-text" id="basic-addon1"> <Email/></span>   
@@ -63,15 +73,9 @@ const Login = () => {
           <span className="input-group-text" id="basic-addon1"> <Lock/></span>   
        
         </div>
-        <div className="row">
-          <div className="col-8">
-          </div>
-   
-          <div className="col-4">
-            <button type="submit" className="btn btn-primary btn-block">Sign In</button>
-          </div>
-    
-        </div>
+       
+            <button type="submit" className="btn btn-primary btn-block float-end">Sign In</button>
+          
       </form>
 
     </div>
@@ -79,7 +83,7 @@ const Login = () => {
   </div>
 </div>
 
-
+</Background>
     </>
   )
 }

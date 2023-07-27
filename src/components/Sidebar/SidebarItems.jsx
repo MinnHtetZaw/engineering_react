@@ -14,9 +14,6 @@ import {
   BuildingIcon,
   CostCenterIcon,
   LogoutIcon
-  // ProductIcon,
-  // BrandIcon,
-  // CategoryIcon,
 } from "../Icons";
 import { dummyData } from "..";
 
@@ -31,7 +28,7 @@ const SubItemName = styled.span`
 const SidebarItems = ({ displaySidebar }) => {
   const [activeItem, setActiveItem] = useState(0);
   const [showSub, setShowSub] = useState(false);
-  const role = useSelector(state=>state.user.user.role.role)
+  const role = useSelector(state=>state.user.user?.role?.role)
 
   const dispatch = useDispatch()
   const nav = useNavigate()
@@ -61,7 +58,6 @@ const SidebarItems = ({ displaySidebar }) => {
           <ItemContainer>
             <Link className="no_underline" to="/categories">
               <ItemWrapper>
-                {/* <CategoryIcon/> */}
                 <SubItemName displaySidebar={displaySidebar}>
                   Categories
                 </SubItemName>
