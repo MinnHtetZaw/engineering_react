@@ -11,7 +11,7 @@ import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import CloseIcon from '@mui/icons-material/Close';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
@@ -29,6 +29,7 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import LogoutIcon from '@mui/icons-material/Logout';
+import DoneIcon from '@mui/icons-material/Done';
 
 export {
   ApartmentIcon as BuildingIcon,
@@ -59,5 +60,7 @@ export {
   RemoveCircleIcon as Minus,
   EmailIcon as Email,
   LockIcon as Lock,
-  LogoutIcon
+  LogoutIcon ,
+  DoneIcon,
+  CloseIcon
 };

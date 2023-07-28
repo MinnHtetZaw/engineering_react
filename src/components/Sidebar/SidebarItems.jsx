@@ -123,7 +123,7 @@ const SidebarItems = ({ displaySidebar }) => {
         ) : (
           ""
         )}
-         {showSub ? (
+         {showSub && role != 'Warehouse Supervisor' ? (
           <ItemContainer>
             <Link className="no_underline" to="/asset">
               <ItemWrapper>
