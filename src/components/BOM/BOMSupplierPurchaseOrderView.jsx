@@ -39,7 +39,6 @@ const BOMSupplierPurchaseOrderView = () => {
     const getProducts = async () =>{
     try{
         const res = await api.get("bomsupplierproduct/"+bom_id);
-        console.log(res.data.products);
         setProducts(res.data.products);
         setSupplierName(res.data.suppliername);
         setEmail(res.data.supplieremail);

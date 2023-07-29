@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import { api } from "../../api/apiResource";
 
-
 const formtitle = {
   textAlign: "center",
   backgroundColor: "#5a8dee",
@@ -27,7 +26,7 @@ const AddGRNItem = () => {
   const [type2, setType2] = useState(false);
   const [type3, setType3] = useState(false);
 
-  const [getcurrency, setGetCurrency] = useState([]);
+  const [getcurrency, setCurrency] = useState([]);
   const [getregwarehouse, setGetRegwarehouse] = useState([]);
   const [serialNo, setSerialNo] = useState("");
   const [model, setModel]= useState("");
@@ -57,6 +56,44 @@ const AddGRNItem = () => {
   const [zoneID,setZoneID]=useState("");
   const [shelfID,setShelfID]=useState("");
   const [levelID,setLevelID]=useState("");
+
+  
+  const getCategories=async()=>{
+    const res = await api.get('currency')
+    setCurrency(res.data.currency)
+  }
+  const getZone =async()=>{
+    const res = await api.get('zone')
+    setZone(res.data.zone)
+  }
+
+  const getRegwarehouse=async()=>{
+    const res = await api.get('regional_warehouse')
+    setGetRegwarehouse(res.data.regwarehouses)
+    
+  }
+  
+  const getShelf=async()=>{
+    const res = await api.get('shelf')
+    setShelf(res.data.shelf)
+    
+  }
+
+  const getLevel=async()=>{
+    const res = await api.get('level')
+
+    setLevel(res.data.level)
+  }
+
+  useEffect(() => {
+    
+    getLevel()
+    getShelf()
+    getRegwarehouse()
+    getZone()
+    getCategories()
+  }, []);
+
 
     const condtype = (val) => {
   
@@ -144,15 +181,7 @@ const wareHouse = (e) =>{
 
   };
 
-  useEffect(() => {
-    api.get("product").then((res) => {
-      setGetCurrency(res.data.currencies)
-      setGetRegwarehouse(res.data.regwarehouses)
-      setZone(res.data.zone)
-      setShelf(res.data.shelf)
-      setLevel(res.data.level)
-    });
-  }, []);
+
 
   return (
     <div>

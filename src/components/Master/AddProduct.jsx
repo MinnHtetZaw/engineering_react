@@ -108,11 +108,17 @@ const AddProduct = () => {
   
 
   useEffect(() => {
-    api.get("product").then((res) => {
-      setCategories(res.data.categories);
-      setSubCategories(res.data.subcategories);
-      setBrands(res.data.brands);
+    api.get("supplier").then((res) => {
       setSuppliers(res.data.suppliers);
+    })
+    api.get('category').then((res)=>{
+      setCategories(res.data.categories);
+    })
+    api.get('sub_category').then((res)=>{
+      setSubCategories(res.data.subcategories);
+    })
+    api.get('brand').then((res)=>{
+      setBrands(res.data.brands);
     })
     api.get("department").then((res)=>{
       setDepartmentList(res.data);

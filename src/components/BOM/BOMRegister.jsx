@@ -44,13 +44,18 @@ const BOMRegister = () => {
           const getProducts = async () =>{
             try{
 
-              const res = await api.get("product");
-          
-              setAllProducts(res.data.productData);
-              setDepartments(res.data.departments);
+              const res = await api.get("product")
+              setAllProducts(res.data.productData)
+              
             }catch(err){}
           };
 
+          const getDepartment=async()=>{
+            const res = await api.get('department')
+            setDepartments(res.data);
+          }
+
+          getDepartment()
           getProjects();
           getProducts();
       
