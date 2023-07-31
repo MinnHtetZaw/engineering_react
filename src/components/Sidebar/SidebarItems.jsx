@@ -46,7 +46,8 @@ const SidebarItems = ({ displaySidebar }) => {
   return (
     <div className="fix">
       <ItemsList>
-        <ItemContainer>
+        {role == 'Warehouse Supervisor' &&
+          <ItemContainer>
           <Link className="no_underline" onClick={show_sub}>
             <ItemWrapper>
               <HomeIcon />
@@ -54,6 +55,8 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+        }
+      
         {showSub ? (
           <ItemContainer>
             <Link className="no_underline" to="/categories">
@@ -137,7 +140,33 @@ const SidebarItems = ({ displaySidebar }) => {
         ) : (
           ""
         )}
+       
+
+        {role == 'Warehouse Supervisor' &&
         <ItemContainer>
+          <Link className="no_underline" to="/regional_warehouse">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Regional Warehouse</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
+        }
+
+
+        
+      
+        {role == 'Project Manager' &&
+        <>
+        <ItemContainer>
+          <Link className="no_underline" to="/site">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Site</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
+         <ItemContainer>
           <Link className="no_underline" to="/building">
             <ItemWrapper>
               <BuildingIcon />
@@ -154,38 +183,6 @@ const SidebarItems = ({ displaySidebar }) => {
           </Link>
         </ItemContainer>
         <ItemContainer>
-          <Link className="no_underline" to="/regional_warehouse">
-            <ItemWrapper>
-              <CostCenterIcon />
-              <ItemName displaySidebar={displaySidebar}>Regional Warehouse</ItemName>
-            </ItemWrapper>
-          </Link>
-        </ItemContainer>
-        <ItemContainer>
-          <Link className="no_underline" to="/site">
-            <ItemWrapper>
-              <CostCenterIcon />
-              <ItemName displaySidebar={displaySidebar}>Site</ItemName>
-            </ItemWrapper>
-          </Link>
-        </ItemContainer>
-        {/* <ItemContainer>
-          <Link className="no_underline" to="/cost_center">
-            <ItemWrapper>
-              <CostCenterIcon />
-              <ItemName displaySidebar={displaySidebar}>Cost Center</ItemName>
-            </ItemWrapper>
-          </Link>
-        </ItemContainer> */}
-        {/* <ItemContainer>
-          <Link className="no_underline" to="/customers">
-            <ItemWrapper>
-              <UserIcon />
-              <ItemName displaySidebar={displaySidebar}>Customers</ItemName>
-            </ItemWrapper>
-          </Link>
-        </ItemContainer> */}
-        <ItemContainer>
           <Link className="no_underline" to="/currency">
             <ItemWrapper>
               <UserIcon />
@@ -193,22 +190,6 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
-        {dummyData.map((itemData, index) => (
-          <ItemContainer
-            key={index}
-            onClick={() => setActiveItem(itemData.id)}
-            className={itemData.id === activeItem ? "active" : ""}
-          >
-            <Link to={itemData.path} className="no_underline">
-              <ItemWrapper>
-                {itemData.icon}
-                <ItemName displaySidebar={displaySidebar}>
-                  {itemData.name}
-                </ItemName>
-              </ItemWrapper>
-            </Link>
-          </ItemContainer>
-        ))}
         <ItemContainer>
           <Link className="no_underline" to="/request_maintenance">
             <ItemWrapper>
@@ -217,6 +198,26 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+          {dummyData.map((itemData, index) => (
+            <ItemContainer
+              key={index}
+              onClick={() => setActiveItem(itemData.id)}
+              className={itemData.id === activeItem ? "active" : ""}
+            >
+              <Link to={itemData.path} className="no_underline">
+                <ItemWrapper>
+                  {itemData.icon}
+                  <ItemName displaySidebar={displaySidebar}>
+                    {itemData.name}
+                  </ItemName>
+                </ItemWrapper>
+              </Link>
+            </ItemContainer>
+          ))}
+          </>
+        }
+     
+       
         <ItemContainer>
           <Link className="no_underline" to="/request_material_list">
             <ItemWrapper>

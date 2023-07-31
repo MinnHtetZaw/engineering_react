@@ -148,8 +148,8 @@ tr {
 }
 
 .img {
-  width: 200px;
-  height: auto;
+ width: 200px;
+  height: auto; 
   background-color: #bbb93c;
 }
 
@@ -188,6 +188,10 @@ tr {
   color: #fff23d
 }
 
-
+.SiteImage {
+  width: 70px;
+  height: 90px; 
+  background-color: #bbb93c;
+}
 
 /* Sidebar toggle button ends */

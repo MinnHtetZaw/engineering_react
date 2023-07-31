@@ -3,6 +3,7 @@ import Nav from "../Sidebar/Nav";
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import { api } from "../../api/apiResource";
+import ShowProject from "./ShowProject";
 
 const formtitle = {
   textAlign: "center",
@@ -55,7 +56,16 @@ const AddProduct = () => {
   const [zoneID,setZoneID]=useState("");
   const [shelfID,setShelfID]=useState("");
   const [levelID,setLevelID]=useState("");
+  const [showProject,setShowProject]=useState(false)
+  const [projects,setProjects]=useState([])
+  const [phase_id,setPhaseID] = useState(null)
+  const [project_id,setProjectID] =useState(null)
 
+  const getProjects = async()=>{
+    const res =await api.get('project')
+    setProjects(res.data.project)
+  }
+  
   const getCategories=async()=>{
     const res = await api.get('currency')
     setCurrency(res.data.currency)
@@ -84,7 +94,8 @@ const AddProduct = () => {
   }
 
   useEffect(() => {
-  
+
+    getProjects()
     getLevel()
     getShelf()
     getRegwarehouse()
@@ -114,6 +125,8 @@ const AddProduct = () => {
     warehouse_type: whType,
     warehouse_id:  parseInt(regWhId),
     site: parseInt(site_),
+    phase_id: phase_id,
+    project_id : project_id,
     serial_no: serialNo,
     model: model,
     size: size,
@@ -144,6 +157,7 @@ const AddProduct = () => {
 
   };
 const wareHouse = (e) =>{
+    setShowProject(false)
     setshowDifWare(true);
     setWareHouse(e.target.value);
     setSite_(0);
@@ -151,6 +165,7 @@ const wareHouse = (e) =>{
   }
 
   const site = (e) => {
+    setShowProject(!showProject)
     setshowDifWare(false);
     setSite_(e.target.value);
     setWhType(0);
@@ -170,15 +185,12 @@ const wareHouse = (e) =>{
 
   const addItem = async (e) => {
     e.preventDefault();
+  
     try {
-      await api
-        .post("item", data)
-        // .then(alert("success"));
+      await api.post("item", data)
       } catch (err) {}
     navigate('/products')
   };
-
-
 
   return (
     <div>
@@ -193,7 +205,7 @@ const wareHouse = (e) =>{
             <form>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Serial No
                   </label>
                   <input
@@ -206,7 +218,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Model
                   </label>
                   <input
@@ -221,7 +233,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Size
                   </label>
                   <input
@@ -234,7 +246,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Color
                   </label>
                   <input
@@ -249,7 +261,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row  my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Dimensions
                   </label>
                   <input
@@ -262,7 +274,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     HS Code
                   </label>
                   <input
@@ -277,7 +289,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-12">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Other Specification
                   </label>
                   <textarea
@@ -291,7 +303,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Condition Type
                   </label>
                   <select
@@ -310,7 +322,7 @@ const wareHouse = (e) =>{
                 </div>
                 {
                   type2 ? <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Condition Remark
                   </label>
                   <textarea
@@ -324,7 +336,7 @@ const wareHouse = (e) =>{
                 }
                 {
                   type3 ? <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Damage Remark
                   </label>
                   <textarea
@@ -339,7 +351,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Unit Purchase Price
                   </label>
                   <input
@@ -352,7 +364,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Unit Selling Price
                   </label>
                   <input
@@ -367,7 +379,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Currency
                   </label>
                   <select
@@ -384,7 +396,7 @@ const wareHouse = (e) =>{
                   </select>
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Purchased Date
                   </label>
                   <input
@@ -398,7 +410,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row">
                 <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Delivered Date
                   </label>
                   <input
@@ -410,7 +422,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Registered Date
                   </label>
                   <input
@@ -424,7 +436,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Stock Quantity
                   </label>
                   <input
@@ -436,7 +448,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-2">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Zone
                   </label>
                   <select
@@ -453,7 +465,7 @@ const wareHouse = (e) =>{
                   </select>
                 </div>
                 <div className="col-2">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Shelf
                   </label>
                   <select
@@ -472,7 +484,7 @@ const wareHouse = (e) =>{
                   </select>
                 </div>
                 <div className="col-2">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Level
                   </label>
                   <select
@@ -502,7 +514,7 @@ const wareHouse = (e) =>{
                       name="wareh_site"
                       id="wh"
                     />
-                    <label className="form-check-label" for="wh">
+                    <label className="form-check-label" htmlFor="wh">
                       Warehouse
                     </label>
                   </div>
@@ -515,12 +527,14 @@ const wareHouse = (e) =>{
                       name="wareh_site"
                       id="si"
                     />
-                    <label className="form-check-label" for="si">
+                    <label className="form-check-label" htmlFor="si">
                       Site
                     </label>
                   </div>
                 </div>
               </div>
+              { showProject && <ShowProject projects={projects} setProjectID={setProjectID} setPhaseID={setPhaseID}/>}
+
               {
                 showDifWare ? <div className="row  my-3">
                 <div className="col-6 mt-4">
@@ -533,7 +547,7 @@ const wareHouse = (e) =>{
                       name="ware_house_type"
                       id="mwh"
                     />
-                    <label className="form-check-label" for="mwh">  
+                    <label className="form-check-label" htmlFor="mwh">  
                       Main Warehouse
                     </label>
                   </div>
@@ -546,7 +560,7 @@ const wareHouse = (e) =>{
                       name="ware_house_type"
                       id="rwh"
                     />
-                    <label className="form-check-label" for="rwh">
+                    <label className="form-check-label" htmlFor="rwh">
                       Regional Warehouse
                     </label>
                   </div>
@@ -555,7 +569,7 @@ const wareHouse = (e) =>{
               }
               {
                 showWarehouse ? <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">
+                <label htmlFor="exampleFormControlInput1" className="form-label">
                   Regional Warehouses
                 </label>
                 <select

@@ -27,7 +27,7 @@ import Currency from "./components/Pages/Currency";
 import RegionalWarehouse from "./components/Master/RegionalWarehouse";
 import AddRegWarehouse from "./components/Master/AddRegWarehouse";
 import RegWhProducts from "./components/Master/RegWhProducts";
-import SiteItems from "./components/Master/SiteItems";
+import SiteItems from "./components/Master/Sites/SiteItems";
 import Zones from "./components/Master/Zones";
 import GRN from "./components/BOM/GRN"
 import AddGRNItem from './components/BOM/AddGRNItem';

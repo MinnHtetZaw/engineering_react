@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-
 import { Link } from "react-router-dom";
-
 import Nav from "../Sidebar/Nav";
 import styled from "styled-components";
 import React from "react";
@@ -10,6 +8,9 @@ import { DeleteIcon, EditIcon, AddIcon, DetailIcon, EyeIcon } from "../Icons";
 import ShowItem from "./ShowItem";
 import { api } from './../../api/apiResource';
 import { url } from "../../api/urlResource";
+
+import { Loading } from "../Loading";
+
 
 const ButtonB = styled.button`
   margin-right: 10px;
@@ -43,7 +44,7 @@ const Products = () => {
   const [items, setItems] = useState([]);
   const [itemDetail,getItemDetail] =useState([]);
   const [create,setShow]=useState(false);
-  
+
 
   const showItemDetail=(id)=>{
   
@@ -60,8 +61,8 @@ const Products = () => {
   useEffect(() => {
     const getPro = () => {
 
-       api
-          .get("product")
+       api.get("product")
+
           .then((res) => {
             setProducts(res.data.productData);
           });
@@ -95,6 +96,7 @@ const Products = () => {
   };
 
   return (
+ 
     <div>
       <Nav />
       <div className="flex">
@@ -147,10 +149,13 @@ const Products = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {products.map((product) => (
+                      {JSON.stringify(products) === '[]' && 
+                      <Loading/>
+                      }
+                      {products.map((product,index) => (
                         <>
                        
-                          <tr key={product.id}>
+                          <tr key={index}>
                             <td className="p-2 text-center ff bod-li">
                               {product.id}
                             </td>
@@ -278,7 +283,7 @@ const Products = () => {
       </div>
       <ShowItem open={create} close={()=>setShow(false)} item={itemDetail}/>
     </div>
-   
+
   );
 }
 

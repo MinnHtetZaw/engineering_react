@@ -105,8 +105,6 @@ const AddProduct = () => {
     }
   };
 
-  
-
   useEffect(() => {
     api.get("supplier").then((res) => {
       setSuppliers(res.data.suppliers);
