@@ -10,6 +10,8 @@ const SiteItems = () => {
 
     const [sitems, setSItems] = useState([]);
     const [projects,setProjects]=useState([])
+    const [phase_id,setPhaseID]=useState(null)
+
 
     useEffect(() => {
         const getSItem = async () => {
@@ -29,11 +31,16 @@ const SiteItems = () => {
         getSItem();
     }, []);
  
+    const handleSearch = async()=>{
+       const res=  await api.get('site_items/phase/'+phase_id)
+
+       setSItems(res.data.data)
+    }
     return (
         <>
         <Nav/>
 
-        <FilterProject projects={projects}/>
+        <FilterProject projects={projects} setPhaseID={setPhaseID} handleSearch={handleSearch}/>
       
         <div className="row m-1">
         <div className="col-12 ma-auto">

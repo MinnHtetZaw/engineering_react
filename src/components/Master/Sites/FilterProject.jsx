@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-const FilterProject = ({projects}) => {
+const FilterProject = ({projects, handleSearch,setPhaseID}) => {
     
     const [phases,setPhases] = useState([])
-
+    
     const handleChange =(e)=>{
 
         const filtered = projects.filter(el=>el.id == e.target.value)
@@ -25,7 +25,7 @@ const FilterProject = ({projects}) => {
         </div>
 
         <div className="col-5">
-            <select className='form-control'>
+            <select className='form-control' onChange={(e)=>setPhaseID(e.target.value)}>
                 <option hidden>Choose Phase</option>
 
                 {
@@ -38,7 +38,7 @@ const FilterProject = ({projects}) => {
             </select>
         </div>
         <div className="col-2 text-end">
-            <button className='btn btn-primary'>Search </button>
+            <button className='btn btn-primary' onClick={handleSearch}>Search </button>
         </div>
     </div>
   )
