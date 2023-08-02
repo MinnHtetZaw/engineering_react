@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { api } from '../../api/apiResource';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
+import { Minus, Plus } from '../Icons';
 
 
 const Form = styled.form`
@@ -18,6 +19,7 @@ const ProductlistDialog = ({open,close,products,id}) => {
     
     const nav = useNavigate()
 
+    
     const Approve =(e)=>{
        e.preventDefault()
        api.post('request_material_status',{
@@ -48,6 +50,8 @@ const ProductlistDialog = ({open,close,products,id}) => {
       
        
        }
+
+
 
   return (
  <>
@@ -84,7 +88,11 @@ const ProductlistDialog = ({open,close,products,id}) => {
                     <span>{product.requested_quantity}</span>
                 </div>
                 <div className="col-md-3 ">
-                    <span>{product.approved_quantity}</span>
+                {/* <Minus className='me-1' fontSize='small' color="primary" onClick={()=>{ return product.approved_quantity--}}/> */}
+                              <span>{product.approved_quantity}</span>
+                {/* <Plus className='ms-1' fontSize='small' color="primary" onClick={()=>PlusQty(index)} /> */}
+                    
+                    
                 </div>
                 </div>
     

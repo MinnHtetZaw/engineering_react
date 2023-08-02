@@ -41,7 +41,7 @@ const SiteItems = () => {
         <Nav/>
 
         <FilterProject projects={projects} setPhaseID={setPhaseID} handleSearch={handleSearch}/>
-      
+       
         <div className="row m-1">
         <div className="col-12 ma-auto">
           <div className="my-2">

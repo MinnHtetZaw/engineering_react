@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { EyeIcon } from '../Icons'
+import ProductCheckDialog from './ProductCheckDialog'
 
 const RequestListWarehouse = ({materials}) => {
 
   const lists = materials.filter((material)=>material.isApproved == 'Approved')
+
+  const [show,setShow] = useState(false)
+  const [products,setProducts]=useState([])
+  const [isRequired,setIsRequired] = useState(false)
+
+  const handleDialog =(val)=>{
+    
+    setShow(!show)
+    setProducts(val)
+    
+    setIsRequired( val.filter(el=>el.required_quantity ===0  ? false : true))
+
+  }
 
   return (
     <>
@@ -50,7 +64,7 @@ const RequestListWarehouse = ({materials}) => {
                         
                                           
                                         <td className="bod-li">
-                                            {/* <EyeIcon onClick={()=>handleDialog(material.products,material.id)} /> */}
+                                            <EyeIcon onClick={()=>handleDialog(list.products)} />
                                             
                                         </td>
                                     </tr>
@@ -66,7 +80,7 @@ const RequestListWarehouse = ({materials}) => {
                 </div>
             </div>
         </div>
-       {/* <ProductlistDialog open={show} close={()=>setShow(!show)} products={products} id={material_id} /> */}
+       <ProductCheckDialog open={show} close={()=>setShow(!show)} products={products} isRequired={isRequired} />
     </>
   )
 }
