@@ -9,6 +9,7 @@ import FilterProject from './FilterProject';
 const SiteItems = () => {
 
     const [sitems, setSItems] = useState([]);
+    const [projects,setProjects]=useState([])
 
     useEffect(() => {
         const getSItem = async () => {
@@ -19,6 +20,12 @@ const SiteItems = () => {
                 
             }catch(err){}
         }
+
+        const getProjects= async()=>{
+          const res = await api.get('project')
+          setProjects(res.data.project)
+        }
+        getProjects()
         getSItem();
     }, []);
  
@@ -26,7 +33,7 @@ const SiteItems = () => {
         <>
         <Nav/>
 
-        <FilterProject />
+        <FilterProject projects={projects}/>
       
         <div className="row m-1">
         <div className="col-12 ma-auto">
