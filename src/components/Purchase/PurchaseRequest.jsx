@@ -5,7 +5,7 @@ import Nav from './../Sidebar/Nav';
 const PurchaseRequest = () => {
 
     const location = useLocation()
-    const data = location.state.data
+    const requiredItems = location.state.data
 
     const [show,setShow]=useState(false)
     
@@ -61,10 +61,15 @@ const PurchaseRequest = () => {
                        
                     </thead>
                     <tbody>
-                        <tr className='text-center'>
-                            <td>{data.product_name}</td>
-                            <td>{data.qty}</td>
-                        </tr>
+                        {requiredItems.map((item,index)=>(
+                          
+                              <tr className='text-center' key={index}>
+                              <td>{item.name}</td>
+                           
+                              <td>{item.required_quantity}</td>
+                              </tr>
+                        ))}
+                       
 
                     </tbody>
                 </table>

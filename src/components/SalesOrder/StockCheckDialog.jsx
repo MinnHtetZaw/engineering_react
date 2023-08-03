@@ -14,6 +14,8 @@ flex-direction: column;
 
 const StockCheckDialog = ({products,open,close}) => {
 
+    // const requiredItems = products.filter(el=>el.)
+
   return (
     <>
     <Dialog open={open} onClose={close} id='showdialog' fullWidth  maxWidth='md'>

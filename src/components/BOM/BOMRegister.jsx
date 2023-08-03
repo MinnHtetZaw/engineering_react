@@ -82,6 +82,7 @@ const BOMRegister = () => {
         department_id :  depid,
         category_id :  id,
   }).then(function(response){
+    console.log(response.data.subcategories);
       setCatId(id);
    
       setSubCategories(response.data.subcategories)

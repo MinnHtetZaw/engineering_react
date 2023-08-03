@@ -4,6 +4,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 const Form = styled.form`
@@ -13,8 +14,11 @@ flex-direction: column;
 
 const ProductCheckDialog = ({open,close,products,isRequired}) => {
 
+    const requiredItems= products.filter((product)=>product.required_quantity > 0 )
+
   return (
  <>
+ 
   <Dialog open={open} onClose={close} id='showdialog' fullWidth  maxWidth='md'>
 
 <DialogTitle  className=''><span>Sale Order Products</span><hr /></DialogTitle>
@@ -67,7 +71,9 @@ const ProductCheckDialog = ({open,close,products,isRequired}) => {
              <div className="text-center mt-5">
     {
         isRequired == false ?  <button className='btn btn-success '>Material Issue</button> :
-                      <button className='btn btn-danger '>Purchase Request</button>
+                      <Link to="/purchase_request" state={{data:requiredItems}}>
+                      <button className='btn btn-danger'>Purchase Request</button>
+                      </Link>
     }
           
             
