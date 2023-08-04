@@ -143,6 +143,7 @@ const SidebarItems = ({ displaySidebar }) => {
        
 
         {role == 'Warehouse Supervisor' &&
+        <>
         <ItemContainer>
           <Link className="no_underline" to="/regional_warehouse">
             <ItemWrapper>
@@ -151,6 +152,15 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+        <ItemContainer>
+          <Link className="no_underline" to="/material_issue_list">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Material Issue</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
+        </>
         }
 
 

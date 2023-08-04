@@ -12,7 +12,7 @@ display: flex;
 flex-direction: column;
 `
 
-const ProductCheckDialog = ({open,close,products,isRequired}) => {
+const ProductCheckDialog = ({open,close,products,isRequired,pid,phid,list_id}) => {
 
     const requiredItems= products.filter((product)=>product.required_quantity > 0 )
 
@@ -71,7 +71,7 @@ const ProductCheckDialog = ({open,close,products,isRequired}) => {
              <div className="text-center mt-5">
     {
         isRequired == false ?  <button className='btn btn-success '>Material Issue</button> :
-                      <Link to="/purchase_request" state={{data:requiredItems}}>
+                      <Link to={'/warehouse_purchase_request/'+list_id} state={{data:requiredItems,projects:[pid,phid]}}>
                       <button className='btn btn-danger'>Purchase Request</button>
                       </Link>
     }

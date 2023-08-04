@@ -46,6 +46,7 @@ import Login from "./components/Login/Login";
 import PurchaseRequest from "./components/Purchase/PurchaseRequest";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import MaterialIssueList from "./components/Warehouse/MaterialIssue/MaterialIssueList";
 
 function App() {
   
@@ -121,7 +122,8 @@ function App() {
        <Route path="/sales_order_list" element={<SalesOrderList/>} />
        <Route path="/add_sales_order" element={<AddSalesOrder/>}/>
 
-       <Route path="/purchase_request" element={<PurchaseRequest/>}/>
+       <Route path="/warehouse_purchase_request/:id" element={<PurchaseRequest/>}/>
+       <Route path="/material_issue_list" element={<MaterialIssueList/>} />
       
        {dummyData &&
          dummyData.map((item, index) => (
