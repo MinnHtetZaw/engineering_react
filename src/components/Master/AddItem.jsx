@@ -77,7 +77,7 @@ const AddProduct = () => {
 
   const getRegwarehouse=async()=>{
     const res = await api.get('regional_warehouse')
-    setGetRegwarehouse(res.data.regwarehouses)
+    setGetRegwarehouse(res.data.regionalwarehouses)
     
   }
   

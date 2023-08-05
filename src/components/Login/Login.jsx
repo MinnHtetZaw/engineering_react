@@ -11,7 +11,8 @@ import styled from 'styled-components'
 
 const Background = styled.div`
     background-image: url(${background});
-   
+    background-repeat: no-repeat;
+    background-size: cover;
 `
 
 
