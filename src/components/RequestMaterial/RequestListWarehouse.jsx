@@ -7,19 +7,15 @@ const RequestListWarehouse = ({materials}) => {
   const lists = materials.filter((material)=>material.isApproved == 'Approved')
 
   const [show,setShow] = useState(false)
-  const [products,setProducts]=useState([])
   const [isRequired,setIsRequired] = useState(false)
-  const [pid,setProjectId]=useState(null)
-  const [phid,setPhaseId]=useState (null)
-  const [list_id,setListId]=useState(null)
+ 
 
-  const handleDialog =(val,p_id,ph_id,id)=>{
-    setListId(id)
+  const [list,setList] = useState({})
+
+  const handleDialog =(val)=>{
+    setList(val)
     setShow(!show)
-    setProducts(val)
-    setProjectId(p_id)
-    setPhaseId(ph_id)
-    setIsRequired( val.filter(el=>el.required_quantity ===0  ? false : true))
+    setIsRequired( val.products.filter(el=>el.required_quantity === 0  ? false : true))
 
   }
 
@@ -68,7 +64,7 @@ const RequestListWarehouse = ({materials}) => {
                         
                                           
                                         <td className="bod-li">
-                                            <EyeIcon onClick={()=>handleDialog(list.products,list.project_id,list.project_phase_id,list.id)} />
+                                            <EyeIcon onClick={()=>handleDialog(list)} />
                                             
                                         </td>
                                     </tr>
@@ -84,7 +80,9 @@ const RequestListWarehouse = ({materials}) => {
                 </div>
             </div>
         </div>
-       <ProductCheckDialog open={show} close={()=>setShow(!show)} products={products} isRequired={isRequired} pid={pid} phid={phid} list_id={list_id}/>
+       <ProductCheckDialog open={show} close={()=>setShow(!show)} 
+                         isRequired={isRequired} 
+                    list={list}/>
     </>
   )
 }
