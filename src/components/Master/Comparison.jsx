@@ -22,9 +22,6 @@ const Comparison = () => {
                     
                     setPrimary(res.data.primaryData[0]);
                     setSecondary(res.data.secondaryData);
-                    
-                    
-             
                 })
            
     }, []);

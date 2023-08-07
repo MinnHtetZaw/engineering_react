@@ -43,7 +43,6 @@ const AddProduct = () => {
   const [purDate, setPurDate]= useState("");
   const [delDate, setDelDate]= useState("");
   const [regDate, setRegDate]= useState("");
-  const [stockQty, setStockQty]= useState("");
   const [itemLocat, setItemLocat]= useState("");
   const [warehouse, setWareHouse]= useState("");
   const [regWhId, setRegWhId] = useState("");
@@ -151,7 +150,7 @@ const AddProduct = () => {
     delivered_date: delDate,
     registered_date: regDate,
     item_location: itemLocat,
-    stock_qty: parseInt(stockQty),
+    stock_qty: 1,
     level_id : parseInt(levelID),
     grn_flag: 0,
 
@@ -435,17 +434,33 @@ const wareHouse = (e) =>{
                 </div>
               </div>
               <div className="row my-3">
-                <div className="col-6">
-                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
-                    Stock Quantity
-                  </label>
-                  <input
-                    value={stockQty}
-                    onChange={(e) => setStockQty(e.target.value)}
-                    type="text"
-                    className="form-control"
-                    placeholder=""
-                  />
+              <div className="col-6 mt-4">
+                  <div className="form-check form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      value="1"
+                      onChange={wareHouse}
+                      name="wareh_site"
+                      id="wh"
+                    />
+                    <label className="form-check-label" htmlFor="wh">
+                      Warehouse
+                    </label>
+                  </div>
+                  <div className="form-check form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      value="2"
+                      onChange={site}
+                      name="wareh_site"
+                      id="si"
+                    />
+                    <label className="form-check-label" htmlFor="si">
+                      Site
+                    </label>
+                  </div>
                 </div>
                 <div className="col-2">
                   <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -504,34 +519,7 @@ const wareHouse = (e) =>{
                 </div>
               </div>
               <div className="row  my-3">
-                <div className="col-6 mt-4">
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      value="1"
-                      onChange={wareHouse}
-                      name="wareh_site"
-                      id="wh"
-                    />
-                    <label className="form-check-label" htmlFor="wh">
-                      Warehouse
-                    </label>
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      value="2"
-                      onChange={site}
-                      name="wareh_site"
-                      id="si"
-                    />
-                    <label className="form-check-label" htmlFor="si">
-                      Site
-                    </label>
-                  </div>
-                </div>
+               
               </div>
               { showProject && <ShowProject projects={projects} setProjectID={setProjectID} setPhaseID={setPhaseID}/>}
 

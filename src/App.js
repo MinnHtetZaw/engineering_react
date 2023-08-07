@@ -47,6 +47,7 @@ import PurchaseRequest from "./components/Purchase/PurchaseRequest";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import MaterialIssueList from "./components/Warehouse/MaterialIssue/MaterialIssueList";
+import WarehouseTransferMonitor from "./components/ProjectManager/Monitor/WarehouseTransferMonitor";
 
 function App() {
   
@@ -125,6 +126,8 @@ function App() {
        <Route path="/warehouse_purchase_request/:id" element={<PurchaseRequest/>}/>
        <Route path="/material_issue_list" element={<MaterialIssueList/>} />
       
+      {/*Transfer Monitor */}
+      <Route path="/check_warehouse_transfer" element={<WarehouseTransferMonitor/>} />
        {dummyData &&
          dummyData.map((item, index) => (
            <Route

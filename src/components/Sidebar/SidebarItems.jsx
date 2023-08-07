@@ -208,6 +208,14 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+        <ItemContainer>
+          <Link className="no_underline" to="/check_warehouse_transfer">
+            <ItemWrapper>
+              <UserIcon />
+              <ItemName displaySidebar={displaySidebar}>WarehouseTransfer Monitor</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
           {dummyData.map((itemData, index) => (
             <ItemContainer
               key={index}

@@ -30,6 +30,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DoneIcon from '@mui/icons-material/Done';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 export {
   ApartmentIcon as BuildingIcon,
@@ -62,5 +63,6 @@ export {
   LockIcon as Lock,
   LogoutIcon ,
   DoneIcon,
-  CloseIcon
+  CloseIcon,
+  ThumbUpIcon
 };

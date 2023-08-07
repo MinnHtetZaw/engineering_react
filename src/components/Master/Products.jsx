@@ -135,7 +135,7 @@ const Products = () => {
                           Selling Price
                         </th>
                         <th scope="col" className="p-2 text-center bod-li">
-                          Stock Quantity
+                          Item Qty
                         </th>
                         <th scope="col" className="p-2 text-center bod-li">
                           Description
@@ -162,7 +162,7 @@ const Products = () => {
                             <td className="p-2 text-center ff bod-li">
                               <img
                                 className="img"
-                                src={url+`images/${product.product_img}`}
+                                src={url+`images/${product.product_img}`}  style={{width:"70px",height:"70px"}}
                                 alt="Product Image"
                               />
                             </td>
@@ -176,7 +176,7 @@ const Products = () => {
                             </td>
                             <td className="p-2 text-center ff bod-li">
                               {" "}
-                              {product.instock_quantity}{" "}
+                              {product.items_count}{" "}
                             </td>
                             <td className="p-2 text-center ff bod-li">
                               {" "}

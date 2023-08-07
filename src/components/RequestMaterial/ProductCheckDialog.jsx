@@ -5,6 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { api } from '../../api/apiResource';
 
 
 const Form = styled.form`
@@ -15,6 +16,15 @@ flex-direction: column;
 const ProductCheckDialog = ({open,close,products,isRequired,pid,phid,list_id}) => {
 
     const requiredItems= products.filter((product)=>product.required_quantity > 0 )
+    
+    const handleIssue= async(e)=>{
+
+        e.preventDefault()
+      
+        const res = await api.get('materialIssue/save/'+list_id)
+
+        console.log(res)
+    }
 
   return (
  <>
@@ -70,7 +80,8 @@ const ProductCheckDialog = ({open,close,products,isRequired,pid,phid,list_id}) =
     }
              <div className="text-center mt-5">
     {
-        isRequired == false ?  <button className='btn btn-success '>Material Issue</button> :
+        isRequired == false ?  
+        <button className='btn btn-success' onClick={handleIssue}>Material Issue</button> :
                       <Link to={'/warehouse_purchase_request/'+list_id} state={{data:requiredItems,projects:[pid,phid]}}>
                       <button className='btn btn-danger'>Purchase Request</button>
                       </Link>
