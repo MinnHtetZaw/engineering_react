@@ -1,13 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../../Sidebar/Nav'
-import { Card, Table } from 'react-bootstrap'
+import { Badge, Button, Card, Table } from 'react-bootstrap'
+import { api } from '../../../api/apiResource'
+import IssueDetailDialog from './IssueDetailDialog'
 
 const MaterialIssueList = () => {
 
+    const [issueLists,setIssueLists] = useState([])
+    const [show,setShow] = useState(false)
+    const [itemsList,setItemList] = useState([])
+
     useEffect(()=>{
-        
+        const getMaterialIssues = async()=>{
+            const res = await api.get('materialIssue/list')
+            
+            setIssueLists(res.data.data)
+        }
+
+        getMaterialIssues()
     },[])
 
+    const handleDialog=(val)=>{
+        setItemList(val)
+        setShow(!show)
+    }
 
   return (
     <div>
@@ -31,25 +47,37 @@ const MaterialIssueList = () => {
                         <th>Status</th>
                     </thead>
                     <tbody>
-                 
-                        <tr className="text-center">
-                            <td></td>
-                            <td>Material Issue No</td>
-                            <td>Customer Name</td>
-                            <td> - </td>
-                            <td>Project</td>
-                            <td>Phase</td>  
-                            <td>Action</td>
-                            <td><span className="badge badge-warning p-1">Pending</span></td>
-                            {/* <td><span className="badge badge-success p-1">Delivery Oredered</span></td> */}
-                        </tr>
+                 {
+                    issueLists.map((list,index)=>(
+                        <tr className="text-center" key={index}>
+                        <td>{++index}</td>
+                        <td>{list.material_issue_no}</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>{list.project_name}</td>
+                        <td>{list.phase_name}</td>  
+                        <td> 
+                        <Button variant='outline-primary' onClick={()=>handleDialog(list.items)}>
+                            Detail
+                        </Button>
+                        </td>
+                        <td>
+                            {list.delivery_order_status == 0 &&  <span><Badge bg='warning'>Pending</Badge></span> }
+                            {list.delivery_order_status == 1 &&  <span><Badge bg='success'>Delivery Oredered</Badge></span> }
+                           </td>
+                        {/* <td><span className="badge badge-success p-1">Delivery Oredered</span></td> */}
+                    </tr>
+                    ))
+                 }
+                      
 
                </tbody>
                 </Table>
             </Card.Body>
         </Card>
-      
+      <IssueDetailDialog open={show} close={()=>setShow(!show)}  itemsList={itemsList}/>
     </div>
+    
   )
 }
 

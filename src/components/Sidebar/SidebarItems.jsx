@@ -160,6 +160,14 @@ const SidebarItems = ({ displaySidebar }) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+        <ItemContainer>
+          <Link className="no_underline" to="/warehouse_transfer/list">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Warehouse Transfer</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
         </>
         }
 

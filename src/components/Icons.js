@@ -31,6 +31,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DoneIcon from '@mui/icons-material/Done';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export {
   ApartmentIcon as BuildingIcon,
@@ -64,5 +65,6 @@ export {
   LogoutIcon ,
   DoneIcon,
   CloseIcon,
-  ThumbUpIcon
+  ThumbUpIcon,
+  DeleteIcon as Delete
 };

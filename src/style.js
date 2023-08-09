@@ -31,3 +31,8 @@ export const Td = styled.td`
   width: 180px;
   max-width: 180px;
 `;
+
+export const Form = styled.form`
+display: flex;
+flex-direction: column;
+`

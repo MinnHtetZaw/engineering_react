@@ -3,6 +3,7 @@ import accountReducer from "./accountRedux";
 import bomReducer from "./bomRedux";
 import grnReducer from "./grnRedux";
 import userReducer from "./userRedux"
+import issueReducer from "./issueRedux"
 
 import {
     persistStore,
@@ -22,7 +23,11 @@ import {
     storage,
   }
 
-  const rootReducer = combineReducers({account: accountReducer, bom: bomReducer, grn: grnReducer,user: userReducer})
+  const rootReducer = combineReducers({account: accountReducer,
+                                           bom: bomReducer, 
+                                           grn: grnReducer,
+                                           user: userReducer,
+                                           issue: issueReducer})
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
 

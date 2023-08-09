@@ -48,6 +48,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import MaterialIssueList from "./components/Warehouse/MaterialIssue/MaterialIssueList";
 import WarehouseTransferMonitor from "./components/ProjectManager/Monitor/WarehouseTransferMonitor";
+import WarehouseTransferList from "./components/Warehouse/WarehouseTransfer/WarehouseTransferList";
+import CreateWarehouseTransfer from "./components/Warehouse/WarehouseTransfer/CreateWarehouseTransfer";
 
 function App() {
   
@@ -128,6 +130,8 @@ function App() {
       
       {/*Transfer Monitor */}
       <Route path="/check_warehouse_transfer" element={<WarehouseTransferMonitor/>} />
+      <Route path="/warehouse_transfer/list" element={<WarehouseTransferList/>} />
+      <Route path="/warehouse_transfer/create" element={<CreateWarehouseTransfer/>} />
        {dummyData &&
          dummyData.map((item, index) => (
            <Route

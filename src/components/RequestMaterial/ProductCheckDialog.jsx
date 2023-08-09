@@ -17,7 +17,6 @@ flex-direction: column;
 
 const ProductCheckDialog = ({open,close,isRequired,list}) => {
 
-    
     const nav = useNavigate()
 
     const requiredItems= list.products?.filter((product)=>product.required_quantity > 0 )
@@ -86,15 +85,15 @@ const ProductCheckDialog = ({open,close,isRequired,list}) => {
              <div className="text-center mt-5">
     {
         
-        isRequired == false ?  
+     
              list.isIssued   == 1 ? <h4><Badge bg='success' size='md'>Material Issue Done!</Badge></h4> :
-                                   <button className='btn btn-success' onClick={handleIssue}>Material Issue</button>
+             isRequired == false  &&   <button className='btn btn-success' onClick={handleIssue}>Material Issue</button>
 
-                      :
-            list.isRequested   == 1 ?    
+                            ||        
+            list.isRequested   == 1 ? 
                        <h4><Badge bg='success' size='md'>Request Done!</Badge></h4> 
                       :
-                      <Link to={'/warehouse_purchase_request/'+list.id} state={{data:requiredItems,projects:[list.project_id , list.project_phase_id]}}>
+            isRequired == false  &&   <Link to={'/warehouse_purchase_request/'+list.id} state={{data:requiredItems,projects:[list.project_id , list.project_phase_id]}}>
                       <button className='btn btn-danger'>Purchase Request</button>
                       </Link>
     }

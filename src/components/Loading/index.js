@@ -1,3 +1,5 @@
+import { Dialog, DialogContent, DialogTitle } from "@mui/material"
+import { Spinner } from "react-bootstrap"
 
 
 
@@ -13,3 +15,17 @@ export const Loading = () => {
   )
 }
 
+export const LoadingDialog=()=>{
+  return (
+    <>
+ 
+    <Dialog open={true} fullWidth  maxWidth='sm'>
+
+    <DialogTitle className="p-3 text-center" ><h3>Please Wait...</h3><hr /></DialogTitle>
+    <DialogContent className="text-center" >
+     <Spinner animation="border" /> 
+    </DialogContent>
+    </Dialog>
+    </>
+  )
+}
