@@ -4,16 +4,24 @@ import { Button, Card, Form, InputGroup } from 'react-bootstrap'
 import { api } from '../../../api/apiResource'
 import IssuesList from './IssuesList'
 import AddIssueList from './AddIssueList'
+import { useSelector } from 'react-redux'
+import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
+import { error } from 'jquery'
 
 const CreateWarehouseTransfer = () => {
 
-    const wtoRef = useRef()
+    const nav = useNavigate()
+
     const dateRef = useRef()
+    const issueList = useSelector(state=>state.issue.issueList)
+    const [wtoNo,setWtoNo] = useState(null)
     const [regWarehouses,setRegWarehouses] = useState([])
     const [project,setProject] = useState({})
     const [phases,setPhases] =useState([])
     const [issues,setIssues] = useState([])
     const [contact_person,setContact]=useState(null)
+    const [regWareId,setRegWareId] =useState(null)
 
     useEffect(()=>{
         const getRegWarehouses =async()=>{
@@ -24,11 +32,12 @@ const CreateWarehouseTransfer = () => {
     
         getRegWarehouses()
     },[])
-
+        
     const selectRegWare=(val)=>{
         
       const filteredProject =  regWarehouses.filter((el)=>el.id == val)
 
+            setRegWareId(val)
             setProject(filteredProject[0].project)
 
             api.get('regional_warehouse/project/'+filteredProject[0].project.id)
@@ -43,10 +52,34 @@ const CreateWarehouseTransfer = () => {
              setContact(res.data.contact_person) 
     }
 
-    const generateWto =()=>{
-        api.get('generate_WTO')
-        .then((res)=>
-        wtoRef.target.value= res.data)
+    const generateWto =async(e)=>{
+        e.preventDefault()
+     const res = await api.get('waretransfer/generate_WTO')
+     setWtoNo(res.data)
+    }
+
+    const handleSend =(e)=>{
+        e.preventDefault()
+
+        if(wtoNo == null)
+        {
+            swal('Error','You need to generate Wto No. !','error')
+        }
+        else{
+            const data={
+                issueList:issueList,
+                date:dateRef.current.value,
+                wto_no: wtoNo,
+                regional_warehouse_id:regWareId
+            }
+                api.post('waretransfer/create',data)
+                .then((res)=>
+                    swal('Good',res.data.success,'success')
+                    .then(()=>nav('/warehouse_transfer/list')))
+                .catch((error)=>
+                swal('Error','Something Went Wrong...!','error'))    
+        }
+       
     }
 
   return (
@@ -60,7 +93,7 @@ const CreateWarehouseTransfer = () => {
              <InputGroup className="my-2">
                 <InputGroup.Text className='bg-dark text-white'>wto</InputGroup.Text>
                 <InputGroup.Text className='bg-secondary text-white'>0000</InputGroup.Text>
-                    <Form.Control ref={wtoRef} required/>
+                    <Form.Control value={wtoNo||''} readOnly/>
                     <Button variant="warning" onClick={generateWto}>
                         Generate
                     </Button>
@@ -88,7 +121,7 @@ const CreateWarehouseTransfer = () => {
             </div>
             <div className="col-md-3">
              <label className='fs-6 fw-bold'>Project:</label>
-             <input className='form-control my-2' value={project.name} />
+             <input className='form-control my-2' value={project.name || ''} disabled/>
             </div>
             <div className="col-md-3">
              <label className='fs-6 fw-bold'>Phase :</label>
@@ -111,8 +144,9 @@ const CreateWarehouseTransfer = () => {
             <AddIssueList contact_person={contact_person}/>
         </div>
         <div className='text-center'>
-            <Button variant="primary">Send Regional Warehouse </Button>
+            <Button variant="primary" onClick={handleSend}>Send Regional Warehouse </Button>
         </div>
+       
         </Card.Body>
     </Card>
     </>

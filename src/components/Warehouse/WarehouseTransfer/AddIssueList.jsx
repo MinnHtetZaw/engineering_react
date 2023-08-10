@@ -12,7 +12,7 @@ const AddIssueList = ({contact_person}) => {
   return (
  
     <div className='col-md-6 my-3'>
-  {console.log(issueList)}
+  
             <Table bordered>
                 <thead>
                     <tr className='bg-secondary text-white text-center'>
