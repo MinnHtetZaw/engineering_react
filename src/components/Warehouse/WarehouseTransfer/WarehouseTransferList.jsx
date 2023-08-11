@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '../../Sidebar/Nav'
-import { Button, Table } from 'react-bootstrap'
+import { Button, Card, Table } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { api } from '../../../api/apiResource'
 import { LoadingDialog } from '../../Loading'
+import TransferDetailList from './TransferDetailList'
 
 const WarehouseTransferList = () => {
  
     const [lists,setLists]=useState([])
     const [isLoading,setIsLoading] = useState(true)
+    const [open, setOpen] = useState(false)
+    const [issues,setIssues] = useState([])
+
+    const handleCollapse =(val)=>{
+      setIssues(val)
+      setOpen(!open)
+    }
     useEffect(()=>{
         const getTransferList = async()=>{
             try{
-                const res = await api.get('warehouse_tranfer/list')
+                const res = await api.get('warehouse_transfer/list')
                 setLists(res.data.data)
             }catch(err)
             {
@@ -29,7 +37,7 @@ const WarehouseTransferList = () => {
     <>
     <Nav/>
     <div className='container m-3'>
-        <div className="row mb-4">
+        <div className="row m-4">
             <div className="col-md-9">
                 <h5>Warehouse Transfer Order Lists</h5>
             </div>
@@ -37,34 +45,56 @@ const WarehouseTransferList = () => {
                 <Button to="/warehouse_transfer/create"  as={NavLink} variant="primary">New Warehouse Transfer Order</Button>
             </div>
         </div>
-        <Table striped hover>
-      <thead>
-        <tr className="text-success text-center">
-          <th>#</th>
-          <th>Warehouse Transfer No</th>
-          <th>Regional Name</th>
-          <th>Date</th>
-          <th>Material Issue Lists</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-            lists.map((list,index)=>(
-                <tr className='text-center' key={index}>
-                    <td>{++index}</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                <td>
-                <Button variant='primary' size='sm'>Detail </Button>  
-                </td>
-              </tr>
-            ))
-        }
-     
-       
-      </tbody>
-    </Table>
+
+        <Card className='shadow border-0 mt-5' >
+          <Card.Body>
+              <Table striped hover>
+                  <thead>
+                  <tr className="text-success text-center">
+                    <th>#</th>
+                    <th>Warehouse Transfer No</th>
+                    <th>Regional Name</th>
+                    <th>Total Qty</th>
+                    <th>Date</th>
+                    <th>Material Issue Lists</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                      lists.map((list,index)=>(
+                        <>
+                          <tr className='text-center' key={index}>
+                              <td>{++index}</td>
+                              <td>{list.warehouse_transfer_no}</td>
+                              <td>{list.reg_ware?.warehouse_name}</td>
+                              <td>{list.total_qty}</td>
+                              <td>{list.date}</td>
+                          <td>
+                          <Button variant='primary' size='sm' aria-controls="transfer-detail"
+                          aria-expanded={open} onClick={()=>handleCollapse(list.material_issues)}>Detail </Button>  
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan={9}>
+                        
+                          <TransferDetailList open={open} issues={issues} />
+
+                        
+                          </td>
+                        </tr>
+                        
+                      
+                        </>
+                      ))
+                  }
+
+                  
+                
+                </tbody>
+              </Table>
+          </Card.Body>
+        </Card>
+      
     </div>
     {
         isLoading === true && <LoadingDialog />

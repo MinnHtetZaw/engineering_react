@@ -54,7 +54,7 @@ const CreateWarehouseTransfer = () => {
 
     const generateWto =async(e)=>{
         e.preventDefault()
-     const res = await api.get('waretransfer/generate_WTO')
+     const res = await api.get('warehouse_transfer/generate_WTO')
      setWtoNo(res.data)
     }
 
@@ -72,8 +72,8 @@ const CreateWarehouseTransfer = () => {
                 wto_no: wtoNo,
                 regional_warehouse_id:regWareId
             }
-                api.post('waretransfer/create',data)
-                .then((res)=>
+                api.post('warehouse_transfer/create',data)
+                .then((res)=> 
                     swal('Good',res.data.success,'success')
                     .then(()=>nav('/warehouse_transfer/list')))
                 .catch((error)=>
