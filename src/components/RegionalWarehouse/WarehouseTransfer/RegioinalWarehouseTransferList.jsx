@@ -12,12 +12,13 @@ const RegionalWarehouseTransferList = () => {
   const [lists,setLists]=useState([])
   const [isLoading,setIsLoading] = useState(true)
   const [open, setOpen] = useState(false)
-  const [transferList,setTransferList] = useState([])
+  const [transferList,setTransferList] = useState({})
 
   const handleCollapse =(val)=>{
     setTransferList(val)
     setOpen(!open)
   }
+
   useEffect(()=>{
       const getTransferList = async()=>{
           try{
@@ -41,6 +42,7 @@ const RegionalWarehouseTransferList = () => {
     
             swal('Success',res.data.message,'success')
             setLists(res.data.data)
+           res.data.data.map((el)=>el.id == id &&  setTransferList(el))
   }
 
   return (
