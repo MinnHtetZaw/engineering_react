@@ -12,10 +12,10 @@ const RegionalWarehouseTransferList = () => {
   const [lists,setLists]=useState([])
   const [isLoading,setIsLoading] = useState(true)
   const [open, setOpen] = useState(false)
-  const [issues,setIssues] = useState([])
+  const [transferList,setTransferList] = useState([])
 
   const handleCollapse =(val)=>{
-    setIssues(val)
+    setTransferList(val)
     setOpen(!open)
   }
   useEffect(()=>{
@@ -65,7 +65,7 @@ const RegionalWarehouseTransferList = () => {
                     <th>Date</th>
                     <th>Lists</th>
                     <th>Action</th>
-                    <th>Deliver</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -80,7 +80,7 @@ const RegionalWarehouseTransferList = () => {
                               <td>{list.date}</td>
                           <td>
                           <Button variant='primary' size='sm' aria-controls="transfer-detail"
-                          aria-expanded={open} onClick={()=>handleCollapse(list.material_issues)}>Detail </Button>  
+                          aria-expanded={open} onClick={()=>handleCollapse(list)}>Detail </Button>  
                           </td>
                           <td>
                           {
@@ -96,32 +96,11 @@ const RegionalWarehouseTransferList = () => {
                             }
 
                           </td>
-                          <td>
-                            {
-                              list.deliver_status == 0 && list.accept_status == 0 &&  
-
-                              <Button variant='secondary' size='sm' disabled >Deliver </Button>
-                            }
-                            {
-                              list.deliver_status == 0 && list.accept_status == 1 &&  
-                              
-                              <Button variant='primary' size='sm'>Deliver </Button>
-                            }
-                            {
-                              list.deliver_status == 1 && list.accept_status == 1 &&  
-                              <span>  <Badge bg='success' >Delivered </Badge> </span>
-                             
-                            }
-                         
-                          </td>
+                          
                         </tr>
                         
-                        
-                          <TransferListDetail open={open} issues={issues} />
+                          <TransferListDetail open={open} transferList={transferList} />
 
-                        
-                       
-                      
                         </>
                       ))
                   }

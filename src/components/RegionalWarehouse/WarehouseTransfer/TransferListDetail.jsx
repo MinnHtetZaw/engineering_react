@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Button, Collapse,Table } from 'react-bootstrap'
+import { Badge, Button, Collapse,Table } from 'react-bootstrap'
 import { api } from '../../../api/apiResource'
 import ProductDialog from './ProductDialog'
 
-const TransferListDetail = ({open,issues}) => {
+const TransferListDetail = ({open,transferList}) => {
     const [show,setShow] =useState(false)
     const [items,setItems] =useState([])
 
@@ -39,11 +39,12 @@ const TransferListDetail = ({open,issues}) => {
                             <th>Phase</th>
                             <th>Total Qty</th>
                             <th>Products</th>
+                            <th>Deliver</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            issues.map((issue,index)=>(
+                            transferList.material_issues?.map((issue,index)=>(
                                 <tr className='text-center' key={index}>
                                     <td>{++index}</td>
                                     <td>{issue.material_issue_no}</td>
@@ -55,6 +56,24 @@ const TransferListDetail = ({open,issues}) => {
                                         <Button variant='outline-success' size='sm' onClick={()=>handleDialog(issue.id)}> Show
                                         </Button>
                                     </td>
+                                    <td>
+                            {
+                             transferList.deliver_status == 0 && transferList.accept_status == 0 &&  
+
+                              <Button variant='secondary' size='sm' disabled >Deliver </Button>
+                            }
+                            {
+                             transferList.deliver_status == 0 && transferList.accept_status == 1 &&  
+                              
+                              <Button variant='primary' size='sm'>Deliver </Button>
+                            }
+                            {
+                              transferList.deliver_status == 1 && transferList.accept_status == 1 &&  
+                              <span>  <Badge bg='success' >Delivered </Badge> </span>
+                             
+                            }
+                         
+                          </td>
                                  
                                 </tr>
                             ))
