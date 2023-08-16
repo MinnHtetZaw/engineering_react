@@ -50,6 +50,7 @@ import MaterialIssueList from "./components/Warehouse/MaterialIssue/MaterialIssu
 import WarehouseTransferMonitor from "./components/ProjectManager/Monitor/WarehouseTransferMonitor";
 import WarehouseTransferList from "./components/Warehouse/WarehouseTransfer/WarehouseTransferList";
 import CreateWarehouseTransfer from "./components/Warehouse/WarehouseTransfer/CreateWarehouseTransfer";
+import RegionalWarehouseTransferList from "./components/RegionalWarehouse/WarehouseTransfer/RegioinalWarehouseTransferList";
 
 function App() {
   
@@ -132,6 +133,9 @@ function App() {
       <Route path="/check_warehouse_transfer" element={<WarehouseTransferMonitor/>} />
       <Route path="/warehouse_transfer/list" element={<WarehouseTransferList/>} />
       <Route path="/warehouse_transfer/create" element={<CreateWarehouseTransfer/>} />
+
+      <Route path="/regional_warehouse_transfer/list" element={<RegionalWarehouseTransferList/>} />
+      
        {dummyData &&
          dummyData.map((item, index) => (
            <Route

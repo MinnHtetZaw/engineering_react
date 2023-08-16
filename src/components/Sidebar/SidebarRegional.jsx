@@ -8,7 +8,7 @@ const SidebarRegional = ({displaySidebar}) => {
   return (
     <>
      <ItemContainer>
-          <Link className="no_underline" to="/warehouse_transfer/list">
+          <Link className="no_underline" to="/regional_warehouse_transfer/list">
             <ItemWrapper>
               <CostCenterIcon />
               <ItemName displaySidebar={displaySidebar}>Warehouse Transfer</ItemName>

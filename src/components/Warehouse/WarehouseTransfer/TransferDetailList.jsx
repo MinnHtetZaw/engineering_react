@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge, Collapse, Fade, Table } from 'react-bootstrap'
+import { Badge, Collapse,Table } from 'react-bootstrap'
 
 const TransferDetailList = ({open,issues}) => {
   return (

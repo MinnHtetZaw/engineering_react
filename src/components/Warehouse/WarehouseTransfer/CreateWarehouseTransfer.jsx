@@ -7,7 +7,6 @@ import AddIssueList from './AddIssueList'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import { error } from 'jquery'
 
 const CreateWarehouseTransfer = () => {
 
