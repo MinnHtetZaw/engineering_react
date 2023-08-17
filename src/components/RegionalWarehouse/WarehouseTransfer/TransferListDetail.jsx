@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Badge, Button, Collapse,Table } from 'react-bootstrap'
 import { api } from '../../../api/apiResource'
 import ProductDialog from './ProductDialog'
+import { DeliverIcon } from '../../Icons'
 
-const TransferListDetail = ({open,transferList}) => {
+const TransferListDetail = ({open,transferList,handleDeliver}) => {
     const [show,setShow] =useState(false)
     const [items,setItems] =useState([])
 
@@ -23,6 +24,8 @@ const TransferListDetail = ({open,transferList}) => {
     }
        
   }
+
+ 
   return (
     <>
     <tr>
@@ -58,17 +61,17 @@ const TransferListDetail = ({open,transferList}) => {
                                     </td>
                                     <td>
                             {
-                             transferList.deliver_status == 0 && transferList.accept_status == 0 &&  
+                             issue.delivery_order_status == 0 && transferList.accept_status == 0 &&  
 
-                              <Button variant='secondary' size='sm' disabled >Deliver </Button>
+                              <Button variant='secondary' size='sm' disabled ><DeliverIcon fontSize='sm'/> Deliver </Button>
                             }
                             {
-                             transferList.deliver_status == 0 && transferList.accept_status == 1 &&  
+                             issue.delivery_order_status == 0 && transferList.accept_status == 1 &&  
                               
-                              <Button variant='primary' size='sm'>Deliver </Button>
+                              <Button variant='outline-primary' size='sm' onClick={()=>handleDeliver(issue.id)}><DeliverIcon fontSize='sm'/> Deliver </Button>
                             }
                             {
-                              transferList.deliver_status == 1 && transferList.accept_status == 1 &&  
+                              issue.delivery_order_status == 1 && transferList.accept_status == 1 && 
                               <span>  <Badge bg='success' >Delivered </Badge> </span>
                              
                             }

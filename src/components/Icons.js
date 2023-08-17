@@ -32,6 +32,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import DoneIcon from '@mui/icons-material/Done';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
 
 export {
   ApartmentIcon as BuildingIcon,
@@ -66,5 +68,6 @@ export {
   DoneIcon,
   CloseIcon,
   ThumbUpIcon,
-  DeleteIcon as Delete
+  DeleteIcon as Delete,
+  LocalShippingIcon as DeliverIcon,
 };

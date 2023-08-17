@@ -33,7 +33,7 @@ const RegionalWarehouseTransferList = () => {
       }
 
       getTransferList()
-  },[])
+  },[transferList])
 
 
   const handleAccept=async(id)=>{
@@ -43,6 +43,23 @@ const RegionalWarehouseTransferList = () => {
             swal('Success',res.data.message,'success')
             setLists(res.data.data)
            res.data.data.map((el)=>el.id == id &&  setTransferList(el))
+  }
+
+  const handleDeliver= async(id)=>{
+
+    try
+    {
+       const res = await api.get('regional_warehouse/deliver/'+id)
+      
+        swal('Success',res.data.message,'success')
+        setLists(res.data.data)
+        res.data.data.map((el)=>el.id == id &&  setTransferList(el))
+
+    }catch(err)
+    {
+        console.error(err);
+    }
+
   }
 
   return (
@@ -74,7 +91,7 @@ const RegionalWarehouseTransferList = () => {
                   {
                       lists.map((list,index)=>(
                         <>
-                          <tr className='text-center' key={index}>
+                          <tr className='text-center' key={list.id}>
                               <td>{++index}</td>
                               <td>{list.warehouse_transfer_no}</td>
                               <td>{list.reg_ware?.warehouse_name}</td>
@@ -101,7 +118,7 @@ const RegionalWarehouseTransferList = () => {
                           
                         </tr>
                         
-                          <TransferListDetail open={open} transferList={transferList} />
+                          <TransferListDetail open={open} transferList={transferList}  handleDeliver={handleDeliver}/>
 
                         </>
                       ))
