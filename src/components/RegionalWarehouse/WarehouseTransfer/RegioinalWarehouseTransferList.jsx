@@ -53,7 +53,7 @@ const RegionalWarehouseTransferList = () => {
       
         swal('Success',res.data.message,'success')
         setLists(res.data.data)
-        res.data.data.map((el)=>el.id == id &&  setTransferList(el))
+        res.data.data.map((el)=>el.material_issues?.map((i)=>i.id == id && setTransferList(el)))
 
     }catch(err)
     {

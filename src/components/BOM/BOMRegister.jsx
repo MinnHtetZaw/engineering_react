@@ -72,7 +72,7 @@ const BOMRegister = () => {
         department_id :  departmentid,
   }).then(function(response){
       setDepId(departmentid);
-
+   
       setCategories(response.data.categories);
   })
     }
@@ -109,7 +109,7 @@ const BOMRegister = () => {
         subcategory_id : subcatid,
         brand_id : id,
   }).then(function(response){
-     
+      console.log(response.data.products);
       setProducts(response.data.products);
   })
     }
@@ -139,14 +139,14 @@ const BOMRegister = () => {
         <h5 className="text-center mt-4 fw-normal text-secondary">Bill Of Material Register</h5>
         <div className='row  m-3'>
         <div className='col-6'>
-            <div className='card border-0  shadow-sm rounded-lg' style={{"border-radius": "50px 0px 50px 50px", "border-bottom": "5px solid red"}}>
+            <div className='card border-0  shadow-sm rounded-lg' style={{"borderRadius": "50px 0px 50px 50px", "borderBottom": "5px solid red"}}>
                 <div className='card-header' style={bgcolor}>
                 <h6 className='text-white text-center font-weight-normal'>Bill Of Material (BOM)</h6>
                 </div>
                 <div className='card-body'>
                 <div className='row  my-3'>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">Sale Project</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Sale Project</label>
                 <select className="form-select" aria-label="Default select example" name="location" onChange={(e)=>setProjectId(e.target.value)}>
                 <option hidden>Select RFQ Project</option>
                 {projects.map(project=>(
@@ -164,11 +164,11 @@ const BOMRegister = () => {
                 </div>
                 <div className='row  my-3'>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">BOM No</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">BOM No</label>
                 <input type="text" className="form-control" placeholder="Enter BOM Number" onChange={(e)=>setBomno(e.target.value)}/>
                 </div>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">Date</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Date</label>
                 <input type="date" className="form-control"  placeholder="Enter Date" onChange={(e)=>setDate(e.target.value)}/>
                 </div> 
                 </div>     
@@ -181,7 +181,7 @@ const BOMRegister = () => {
 
               <table className="table table-hover table-borderless">
                 <thead style={bgcolor}>
-                <tr className="fw-normal text-white text-center" style={{'font-size':'12px'}}>
+                <tr className="fw-normal text-white text-center" style={{'fontSize':'12px'}}>
                 <th>No</th>
                 <th>Name</th>                                   
                 <th>Brand</th>
@@ -196,11 +196,11 @@ const BOMRegister = () => {
                 {bom_products.map((aproduct,index)=>(
                   allproducts.map((pro,i)=>(
                     aproduct.product_id == pro.id ?
-                  <tr className="text-center" style={{'font-size':'13px'}}>
+                  <tr className="text-center" style={{'fontSize':'13px'}}>
                   <td>{++index}</td>
                   <td>{pro.product_name}</td>
-                  <td>{pro.brand.brand_name}</td>
-                  <td>{pro.category.category_name}</td>
+                  <td>{pro.brand?.brand_name}</td>
+                  <td>{pro.category?.category_name}</td>
                   <td>{aproduct.req_qty}<input type='hidden' value={tot_qty += parseInt(aproduct.req_qty)}/></td>
                   <td>{aproduct.req_spec}</td>
                   <td><a onClick={()=>closeproduct(aproduct.product_id)}><AiFillCloseSquare size="25px"/></a></td>
@@ -218,14 +218,14 @@ const BOMRegister = () => {
             </div>
         </div>
         <div className='col-6'>
-        <div className='card border-0  shadow-sm rounded-lg' style={{"border-radius": "50px 0px 50px 50px", "border-bottom": "5px solid red"}}>
+        <div className='card border-0  shadow-sm rounded-lg' style={{"borderRadius": "50px 0px 50px 50px", "borderBottom": "5px solid red"}}>
                 <div className='card-header' style={bgcolor}>
                 <h6 className='text-white text-center font-weight-normal'>Inventory</h6>
                 </div>
                 <div className='card-body'>
                 <div className='row  my-3'>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">Department</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Department</label>
                 <select className="form-select" aria-label="Default select example" name="location" onChange={(e)=>changeDepartment(e.target.value)}>
                 <option hidden>Select Department</option>
                
@@ -238,7 +238,7 @@ const BOMRegister = () => {
                 </select>
                 </div>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">Category</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Category</label>
                 <select className="form-select" aria-label="Default select example" name="location" onChange={(e)=>changeCategory(e.target.value)} id='filter_cat'>
                 <option hidden>Select Category</option>
                 {categories.map(category=>(
@@ -251,7 +251,7 @@ const BOMRegister = () => {
                 </div>  
                 <div className='row  my-3'>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">Subcategory</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Subcategory</label>
                 <select className="form-select" aria-label="Default select example" name="location" onChange={(e)=>changeSubCategory(e.target.value)}>
                 <option hidden>Select Subcategory</option>
                 {subcategories.map(subcategory=>(
@@ -262,7 +262,7 @@ const BOMRegister = () => {
                 </select>
                 </div>
                 <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">Brand</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Brand</label>
                 <select className="form-select" aria-label="Default select example" name="location" onChange={(e)=>changeBrand(e.target.value)}>
                 <option hidden>Select Brand</option>
                 {brands.map(brand=>(
@@ -279,7 +279,7 @@ const BOMRegister = () => {
 
               <table className="table table-hover table-borderless">
                 <thead style={bgcolor}>
-                <tr className="text-white text-center" style={{'font-size':'12px'}}>
+                <tr className="text-white text-center" style={{'fontSize':'12px'}}>
                 <th>No</th>
                 <th>Product Name</th>
                 <th>Brand</th>
@@ -291,12 +291,12 @@ const BOMRegister = () => {
                 <tbody >
             
                   {products.map((product,index)=>(
-                    <tr className="text-center" style={{'font-size':'13px'}}>
+                    <tr className="text-center" style={{'fontSize':'13px'}}>
                     <td>{++index}</td>
                     <td>{product.product_name}</td>
                     <td>{product.brand?.brand_name}</td>
-                    <td>{product.category.category_name}</td>
-                    <td>{product.instock_quantity}</td>
+                    <td>{product.category?.category_name}</td>
+                    <td>{product.items_count}</td>
                     <td><a onClick={()=>addproduct(product.id)}><AiFillPlusSquare size="25px"/></a></td>
                     </tr>
                   ))}

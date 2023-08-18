@@ -74,9 +74,6 @@ const Building = () => {
 	        <li className=" nav-item"> 
 	        	<a href="#navpills-1" className="nav-link active" data-toggle="tab" aria-expanded="false">List View</a> 
 	        </li>
-	        <li className="nav-item"> 
-	        	<a href="#navpills-2" className="nav-link" data-toggle="tab" aria-expanded="false">Graphical View</a> 
-	        </li>
 	    </ul>
 
 	  

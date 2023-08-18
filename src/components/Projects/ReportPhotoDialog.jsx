@@ -21,7 +21,7 @@ const ReportPhotoDialog = (props) => {
                 props.photos.map((photo,i)=>(
       <div className="col-4">
                   
-        <a href={url+`report_file/${photo}`} target="blank" ><img alt='logo' src={url+`report_file/${photo}`} height="200px" width="250px"/></a>
+        <a href={url+`report_task_file/photos/${photo}`} target="blank" ><img alt='logo' src={url+`report_task_file/photos/${photo}`} height="200px" width="250px"/></a>
             
         </div>     			     
                 

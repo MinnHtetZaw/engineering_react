@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Nav from '../Sidebar/Nav'
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { api } from '../../api/apiResource'
-
 import InfoIcon from '@mui/icons-material/Info'
 import { useParams } from 'react-router-dom'
 import ReportPhotoDialog from './ReportPhotoDialog';
+import ReportVideoDialog from './ReportVideoDialog';
 
 const TaskList = () => {
   const { id } = useParams()
@@ -13,6 +13,9 @@ const TaskList = () => {
   const [reports, setReports] = useState([])
   const [photos,setPhotos] = useState([])
   const [create, setCreate] = useState(false)
+  const [videos,setVideos] = useState([])
+  const [create2, setCreate2] = useState(false)
+
 
   const bgcolor = {
     backgroundColor: '#5a8dee'
@@ -52,6 +55,11 @@ const TaskList = () => {
       document.getElementById("showReport" + id).setAttribute("value", "0");
     }
     
+  }
+  const setVideoDialog=(val)=>{
+    setVideos(val)
+    setCreate2(true)
+  
   }
 
   useEffect(() => {
@@ -159,7 +167,8 @@ const TaskList = () => {
                                         {/* {report.progress} */}
                                       </td>
                                       <td className='bod-li'>
-                                      <span className="ml-2 mr-2" onClick={()=>setPhotoDialog(report.files.file)}><PhotoCameraIcon color="primary" fontSize="small"/>photo<sup className="bg-secondary text-white rounded px-1">{report.file_count}</sup></span>
+                                      <span className="ml-2 mr-2" onClick={()=>setPhotoDialog(report.files[0].file)}><PhotoCameraIcon color="primary" fontSize="small"/>photo<sup className="bg-secondary text-white rounded px-1">{report.files[0].file.length}</sup></span>
+                                      <button className='ms-3'> <span className="ml-2 mr-2" onClick={()=>setVideoDialog(report.files[1].file)}><PhotoCameraIcon color="primary" fontSize="small"/>video<sup className="bg-secondary text-white rounded px-1">{report.files[1].file.length}</sup></span></button>
                                       </td>
                                       <td className='bod-li'>
                                         {report.performance}
@@ -184,6 +193,11 @@ const TaskList = () => {
         open={create}
         close={() => setCreate(false)}
         photos={photos}
+      />
+      <ReportVideoDialog
+        open={create2}
+        close={() => setCreate2(false)}
+        videos={videos}
       />
     </div>
   )

@@ -147,11 +147,11 @@ const BOMRequestRegister = () => {
 
         <div className='row  mt-5'>
             <div className="col-4">
-            <label for="exampleFormControlInput1" className="form-label">Request No</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Request No</label>
             <input type="text" className="form-control" placeholder="Enter Request Number" onChange={(e)=>setReqno(e.target.value)}/>
             </div>
             <div className="col-4">
-            <label for="exampleFormControlInput1" className="form-label">Supplier</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier</label>
             <select name="supplier" className='form-control' onChange={(e)=>supplierChange(e.target.value)}>
                <option id='sup'>Select Supplier</option>
                {suppliers.map(supplier=>(
@@ -168,21 +168,21 @@ const BOMRequestRegister = () => {
         </div>  
         <div className='row  my-4'>
             <div className="col-4">
-            <label for="exampleFormControlInput1" className="form-label">Email</label>
-            <input type="email" className="form-control" placeholder="Supplier Email" value={email}   readyonly/>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Email</label>
+            <input type="email" className="form-control" placeholder="Supplier Email" value={email} disabled/>
             </div>
             <div className="col-4">
-            <label for="exampleFormControlInput1" className="form-label">Title</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Title</label>
             <input type="text" className="form-control" placeholder="Enter Title"/>
             </div> 
             <div className="col-4">
-            <label for="exampleFormControlInput1" className="form-label">Tendative Reply Date</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Tendative Reply Date</label>
             <input type="date" className="form-control"  placeholder="Enter Date" onChange={(e)=>setDate(e.target.value)}/>
             </div> 
         </div>  
         <div className='row  my-4'>
             <div className="offset-1 col-10  text-center">
-            <label for="exampleFormControlInput1" className="form-label">Description</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Description</label>
             <textarea name="description"  cols="25" rows="4" className='form-control'></textarea>
             </div>    
         </div>
@@ -198,7 +198,7 @@ const BOMRequestRegister = () => {
 
               <table className="table table-hover table-borderless">
                 <thead style={bgcolor}>
-                <tr className="fw-normal text-white text-center" style={{'font-size':'16px'}}>
+                <tr className="fw-normal text-white text-center" style={{'fontSize':'16px'}}>
                 <th>No</th>
                 <th>Name</th>                                   
                 <th>Brand</th>
@@ -211,10 +211,10 @@ const BOMRequestRegister = () => {
                 </thead>
                 <tbody>
                 {products.map((product,index)=>(
-                     <tr className="fw-normal text-center">
+                     <tr className="fw-normal text-center" key={index}>
                      <td>{++index}</td>
-                     <td>{product.product.product_name}</td>                                   
-                     <td>{product.product.brand.brand_name}</td>
+                     <td>{product.product?.product_name}</td>                                   
+                     <td>{product.product?.brand?.brand_name}</td>
                      <td>{product.required_qty}</td>
                      <td><input type="text" placeholder={product.required_qty} className='border border-solid border-info' onChange={(e)=>changeRequestedQty(e.target.value,product.id)}/></td>
                      <td><input type="text" placeholder='0' className='border border-solid border-info' onChange={(e)=>changeRequested(e.target.value,product.id)}/></td>
