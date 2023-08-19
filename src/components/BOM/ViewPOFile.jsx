@@ -6,6 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
+import { url } from '../../api/urlResource';
 
 const Form = styled.form`
     display: flex;
@@ -22,7 +23,7 @@ const ViewPOFile = (props) => {
         <Form>
               
             <div className='row mt-3'>
-            <img src={`http://localhost:8000/purchaseorder/${props.file}`} className="img-fluid"/>      
+            <img src={url+`purchaseorder/${props.file}`} className="img-fluid"/>      
             </div>
 
           </Form>

@@ -175,41 +175,41 @@ const BOMSupplierPurchaseOrder = () => {
 
         <div className='row  mt-5'>
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Supplier PO No</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier PO No</label>
             <input type="text" className="form-control" placeholder="Enter Request Number" onChange={(e)=>setPono(e.target.value)}/>
             </div>
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Supplier Name</label>
-            <input type="text" className="form-control"  value={suppliername} readOnly/>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier Name</label>
+            <input type="text" className="form-control"  value={suppliername} disabled/>
             </div> 
         </div>  
         <div className='row  my-4'>
         <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Title</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Title</label>
             <input type="text" className="form-control" placeholder="Enter Title" onChange={(e)=>setTitle(e.target.value)}/>
             </div> 
 
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Supplier Email</label>
-            <input type="email" className="form-control" placeholder="Supplier Email"   value={email} readyOnly/>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier Email</label>
+            <input type="email" className="form-control" placeholder="Supplier Email"   value={email} disabled/>
             </div>
              
         </div>
         <div className='row  my-4'>
         <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Attach File</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Attach File</label>
             <input type="file" className="form-control" placeholder="Enter Title" onChange={(e)=>setFile(e.target.files[0])}/>
             </div> 
 
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Date</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Date</label>
             <input type="date" className="form-control" placeholder="Supplier Email"   onChange={(e)=>setDate(e.target.value)}/>
             </div>
              
         </div>    
         <div className='row  my-4'>
             <div className="offset-1 col-10  text-center">
-            <label for="exampleFormControlInput1" className="form-label">Description</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Description</label>
             <textarea name="description"  cols="25" rows="4" className='form-control' onChange={(e)=>setDescription(e.target.value)}></textarea>
             </div>    
         </div>
@@ -224,7 +224,7 @@ const BOMSupplierPurchaseOrder = () => {
 
               <table className="table table-hover table-borderless">
                 <thead style={bgcolor}>
-                <tr className="fw-normal text-white text-center" style={{'font-size':'16px'}}>
+                <tr className="fw-normal text-white text-center" style={{'fontSize':'16px'}}>
                 <th>No</th>
                 <th>Name</th>                                   
                 <th>Brand</th>
@@ -238,11 +238,11 @@ const BOMSupplierPurchaseOrder = () => {
                 <tbody>
                 {products.map((product,index)=>(
               
-                     <tr className="fw-normal text-center">
+                     <tr className="fw-normal text-center" key={index}>
                    
                      <td>{++index}</td>
-                     <td>{product.productdetail.product_name}</td>                                   
-                     <td>{product.productdetail.brand.brand_name}</td>
+                     <td>{product.productdetail?.product_name}</td>                                   
+                     <td>{product.productdetail?.brand?.brand_name}</td>
                      <td>{bomproduct.required_qty}</td>
                      <td><input type="text" placeholder={product.requested_qty} className='border border-solid border-info' onChange={(e)=>changeRequestedQty(e.target.value,product.id)}/></td>
                      <td><input type="text" placeholder={product.requested_price} className='border border-solid border-info' onChange={(e)=>changeRequested(e.target.value,product.id)}/></td>

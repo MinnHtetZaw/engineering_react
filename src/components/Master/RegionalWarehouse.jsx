@@ -6,6 +6,7 @@ import React from "react";
 import "../../App.css";
 import { AddIcon, EyeIcon } from "../Icons";
 import { api } from "../../api/apiResource";
+import { url } from "../../api/urlResource";
 
 const ButtonB = styled.button`
   margin-right: 10px;
@@ -74,10 +75,10 @@ const RegionalWare = () => {
                 <Flex>
                   {
                     regWarehouses.map((regwarehouse) =>(
-                      <div className="card mb-3" style={{maxWidth: '500px'}}>
+                      <div className="card mb-3" style={{maxWidth: '500px'}} key={regwarehouse.id}>
                       <Flex className="row g-0">
                         <ImgBox className="w-50">
-                          <Img src={`http://localhost:8000/warehouse_img/${regwarehouse.warehouse_photo}`} className="" alt=""/>
+                          <Img src={url+`warehouse_img/${regwarehouse.warehouse_photo}`} className="" alt=""/>
                         </ImgBox>
                         <div className="w-50">
                           <div className="card-body">

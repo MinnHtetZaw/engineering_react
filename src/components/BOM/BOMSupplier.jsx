@@ -97,7 +97,7 @@ const BOMSupplier = () => {
               <h6 className='text-center mb-2'>{bom_no}</h6>
               <table className="table table-hover table-borderless">
                 <thead style={bgcolor}>
-                  <tr scope="col" className="fw-normal text-white text-center" style={{ 'font-size': '14px' }}>
+                  <tr scope="col" className="fw-normal text-white text-center" style={{ 'fontSize': '14px' }}>
                     <th >No</th>
                     <th>Request No</th>
                     <th>Req Quotation Date</th>
@@ -113,7 +113,7 @@ const BOMSupplier = () => {
                 </thead>
                 <tbody>
                   {boms.map((bom, index) => (
-                    <tr scope="col" className="fw-normal text-center" style={{ 'font-size': '14px' }} key={index}>
+                    <tr scope="col" className="fw-normal text-center" style={{ 'fontSize': '14px' }} key={index}>
                       <td >{++index}</td>
                       <td>{bom.request_no}</td>
                       <td>{bom.request_quotation_date}</td>

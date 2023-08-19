@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Nav from '../../Sidebar/Nav'
 import { Button, Card, Table } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
@@ -62,8 +62,8 @@ const WarehouseTransferList = () => {
                 <tbody>
                   {
                       lists.map((list,index)=>(
-                        <>
-                          <tr className='text-center' key={index}>
+                        <Fragment key={list.id}>
+                          <tr className='text-center' >
                               <td>{++index}</td>
                               <td>{list.warehouse_transfer_no}</td>
                               <td>{list.reg_ware?.warehouse_name}</td>
@@ -84,7 +84,7 @@ const WarehouseTransferList = () => {
                         </tr>
                         
                       
-                        </>
+                        </Fragment>
                       ))
                   }
 

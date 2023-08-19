@@ -54,8 +54,8 @@ const StockCheckDialog = ({products,open,close}) => {
                   </div>
                   <div className="col-md-3">
                     {
-                        product.required_qty >0 ? <span class="badge badge-danger">{product.required_qty}</span> :
-                        <span class="badge badge-success">{product.required_qty}</span>
+                        product.required_qty >0 ? <span className="badge badge-danger">{product.required_qty}</span> :
+                        <span className="badge badge-success">{product.required_qty}</span>
                     }
                       
                   </div>

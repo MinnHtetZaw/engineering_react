@@ -20,7 +20,7 @@ const TransferDetailList = ({open,issues}) => {
                     <tbody>
                         {
                             issues.map((issue,index)=>(
-                                <tr className='text-center' key={index}>
+                                <tr className='text-center' key={issue.id}>
                                     <td>{++index}</td>
                                     <td>{issue.material_issue_no}</td>
                                     <td>{issue.project?.name}</td>

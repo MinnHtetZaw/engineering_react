@@ -178,29 +178,29 @@ const BOMSupplierPurchaseOrderView = () => {
 
         <div className='row  mt-5'>
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Supplier PO No</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier PO No</label>
             <input type="text" className="form-control" placeholder="Enter Request Number" value={pono} onChange={(e)=>setPono(e.target.value)}/>
             </div>
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Supplier Name</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier Name</label>
             <input type="text" className="form-control"  value={suppliername} readOnly/>
             </div> 
         </div>  
         <div className='row  my-4'>
         <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Title</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Title</label>
             <input type="text" className="form-control" placeholder="Enter Title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
             </div> 
 
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Supplier Email</label>
-            <input type="email" className="form-control" placeholder="Supplier Email"   value={email} readyOnly/>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Supplier Email</label>
+            <input type="email" className="form-control" placeholder="Supplier Email"   value={email} disabled/>
             </div>
              
         </div>
         <div className='row  my-4'>
         <div className="col-4">
-            <label for="exampleFormControlInput1" className="form-label">Attach File</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Attach File</label>
             <input type="file" className="form-control" placeholder="Enter Title"  onChange={(e)=>setFile(e.target.files[0])}/>
             </div> 
             <div className='col-2'>
@@ -208,14 +208,14 @@ const BOMSupplierPurchaseOrderView = () => {
             </div>
 
             <div className="col-6">
-            <label for="exampleFormControlInput1" className="form-label">Date</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Date</label>
             <input type="date" className="form-control" value={date} placeholder="Supplier Email"   onChange={(e)=>setDate(e.target.value)}/>
             </div>
              
         </div>    
         <div className='row  my-4'>
             <div className="offset-1 col-10  text-center">
-            <label for="exampleFormControlInput1" className="form-label">Description</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Description</label>
             <textarea name="description"  cols="25" rows="4" className='form-control' value={description} onChange={(e)=>setDescription(e.target.value)}></textarea>
             </div>    
         </div>
@@ -230,7 +230,7 @@ const BOMSupplierPurchaseOrderView = () => {
 
               <table className="table table-hover table-borderless">
                 <thead style={bgcolor}>
-                <tr className="fw-normal text-white text-center" style={{'font-size':'16px'}}>
+                <tr className="fw-normal text-white text-center" style={{'fontSize':'16px'}}>
                 <th>No</th>
                 <th>Name</th>                                   
                 <th>Brand</th>
@@ -242,7 +242,7 @@ const BOMSupplierPurchaseOrderView = () => {
                 </thead>
                 <tbody>
                 {products.map((product,index)=>(
-                     <tr className="fw-normal text-center">
+                     <tr className="fw-normal text-center" key={index}>
                      <td>{++index}</td>
                      <td>{product.productdetail.product_name}</td>                                   
                      <td>{product.productdetail.brand.brand_name}</td>

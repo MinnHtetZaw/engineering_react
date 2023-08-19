@@ -5,6 +5,7 @@ import { useLocation  } from 'react-router-dom';
 import { AiFillPlusSquare } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { api } from './../../api/apiResource';
+import swal from 'sweetalert';
 
 const GRNData = () => {
 
@@ -12,7 +13,7 @@ const GRNData = () => {
    const [grnno , setGRNno] = useState('');
    const [poData,setPO]=useState('');
    const [date , setDate] = useState('');
-   const [existGRNData,setExistGRNData]=useState([]);
+   const [existGRNData,setExistGRNData]=useState({});
    const [receive,setReceiveby]=useState('');
    const [deliver,setDeliverby]=useState('');
    const location = useLocation();
@@ -46,11 +47,19 @@ const data={
 }
 
 
-const saveGRNData=()=>{
+const saveGRNData=async()=>{
 
-  api.post("bomsupplierGRNData_save",data)
+  
+  try{
+    const res = await api.post("bomsupplierGRNData_save",data)
+      swal('Good',res.data.success,'success')
+
+    window.location.reload()
+  }catch(err)
+  {
+    console.error(err);
+  } 
  
-  window.location.reload()
 }
 
 
@@ -59,13 +68,16 @@ useEffect(()=>{
     const PoData= async()=>{
 
         const res= await api.get("bomsupplierproduct/"+bom_sup_id)
-       
+        console.log(res.data);
         setProducts(res.data.bomproducts);
         setPO(res.data.view);
         setGRNno(res.data.grnNo)
 
-        if(res.data.existGRNData !=null){
+        if(res.data.existGRNData != null){
           setExistGRNData(res.data.existGRNData)
+        }
+        else {
+          setExistGRNData(null)
         }
         
     }
@@ -76,7 +88,7 @@ useEffect(()=>{
   return (
     <div>
         <Nav/>
-      
+       
         <div className='row m-2'>
         <div className='col-12 ma-auto'>
         <div className='card border-0 p-3 shadow-sm rounded-lg'>
@@ -93,8 +105,8 @@ useEffect(()=>{
             <label className="form-label">Date</label>
             { 
             !existGRNData ?
-              <input type="date" className="form-control" placeholder="Supplier Email" value={date}  onChange={(e)=>setDate(e.target.value)}/> :
-              <input type="date" className="form-control" placeholder="Supplier Email" value={existGRNData.grnDate} disabled/>
+              <input type="date" className="form-control" placeholder="Supplier Email" value={date||''}  onChange={(e)=>setDate(e.target.value)}/> :
+              <input type="date" className="form-control" placeholder="Supplier Email" value={existGRNData.grnDate || ''} disabled/>
             }
            
             </div>
@@ -105,8 +117,8 @@ useEffect(()=>{
 
             {
             !existGRNData ?
-            <input type="text" className="form-control" placeholder="Enter Receiver Name"  value={receive} onChange={(e)=>setReceiveby(e.target.value)}/>:
-            <input type="text" className="form-control" placeholder="Enter Receiver Name"  value={existGRNData.recevied_by} disabled/>
+            <input type="text" className="form-control" placeholder="Enter Receiver Name"  value={receive || ''} onChange={(e)=>setReceiveby(e.target.value)}/>:
+            <input type="text" className="form-control" placeholder="Enter Receiver Name"  value={existGRNData.recevied_by || ''} disabled/>
             }
            
             </div>
@@ -114,8 +126,8 @@ useEffect(()=>{
             <label className="form-label">Delivered by</label>
             {
             !existGRNData ?
-            <input type="text" className="form-control" placeholder="Enter Deliver Name"  value={deliver} onChange={(e)=>setDeliverby(e.target.value)}/>:
-            <input type="text" className="form-control" placeholder="Enter Deliver Name"  value={existGRNData.delivered_by} disabled/>
+            <input type="text" className="form-control" placeholder="Enter Deliver Name"  value={deliver || ''} onChange={(e)=>setDeliverby(e.target.value)}/>:
+            <input type="text" className="form-control" placeholder="Enter Deliver Name"  value={existGRNData.delivered_by || ''} disabled/>
             }
             </div>
         </div>  

@@ -21,7 +21,7 @@ export const LoadingDialog=()=>{
  
     <Dialog open={true} fullWidth  maxWidth='sm'>
 
-    <DialogTitle className="p-3 text-center" ><h3>Please Wait...</h3><hr /></DialogTitle>
+    <DialogTitle className="p-3 text-center" ><label>Please Wait...</label><hr /></DialogTitle>
     <DialogContent className="text-center" >
      <Spinner animation="border" /> 
     </DialogContent>

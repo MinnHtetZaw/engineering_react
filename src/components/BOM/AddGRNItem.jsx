@@ -196,7 +196,7 @@ const wareHouse = (e) =>{
             <form>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Serial No
                   </label>
                   <input
@@ -209,7 +209,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Model
                   </label>
                   <input
@@ -224,7 +224,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Size
                   </label>
                   <input
@@ -237,7 +237,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Color
                   </label>
                   <input
@@ -252,7 +252,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row  my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Dimensions
                   </label>
                   <input
@@ -265,7 +265,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     HS Code
                   </label>
                   <input
@@ -280,7 +280,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-12">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Other Specification
                   </label>
                   <textarea
@@ -294,7 +294,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Condition Type
                   </label>
                   <select
@@ -313,7 +313,7 @@ const wareHouse = (e) =>{
                 </div>
                 {
                   type2 ? <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Condition Remark
                   </label>
                   <textarea
@@ -327,7 +327,7 @@ const wareHouse = (e) =>{
                 }
                 {
                   type3 ? <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Damage Remark
                   </label>
                   <textarea
@@ -342,7 +342,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Unit Purchase Price
                   </label>
                   <input
@@ -355,7 +355,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Unit Selling Price
                   </label>
                   <input
@@ -370,7 +370,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Currency
                   </label>
                   <select
@@ -382,12 +382,12 @@ const wareHouse = (e) =>{
                   >
                     <option hidden>Choose Currency</option>
                     {getcurrency.map((currency) => (
-                      <option value={currency.id}>{currency.name}</option>
+                      <option value={currency.id} key={currency.id}>{currency.name}</option>
                     ))}
                   </select>
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Purchased Date
                   </label>
                   <input
@@ -401,7 +401,7 @@ const wareHouse = (e) =>{
               </div>
               <div className="row">
                 <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Delivered Date
                   </label>
                   <input
@@ -413,7 +413,7 @@ const wareHouse = (e) =>{
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Registered Date
                   </label>
                   <input
@@ -439,7 +439,7 @@ const wareHouse = (e) =>{
                   />
                 </div> */}
                 <div className="col-2">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Zone
                   </label>
                   <select
@@ -451,12 +451,12 @@ const wareHouse = (e) =>{
                   >
                     <option hidden>Choose Zone</option>
                     {zones.map((zone) => (
-                      <option value={zone.id}>{zone.name}</option>
+                      <option value={zone.id} key={zone.id}>{zone.name}</option>
                     ))}
                   </select>
                 </div>
                 <div className="col-2">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Shelf
                   </label>
                   <select
@@ -469,13 +469,13 @@ const wareHouse = (e) =>{
                     <option hidden>Choose Shelf</option>
                     {shelves.map((shelf) => (
                       shelf.zone_id == zoneID ?
-                      <option value={shelf.id}>{shelf.shelf_name}</option> 
+                      <option value={shelf.id} key={shelf.id}>{shelf.shelf_name}</option> 
                       : ''
                     ))}
                   </select>
                 </div>
                 <div className="col-2">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Level
                   </label>
                   <select
@@ -488,7 +488,7 @@ const wareHouse = (e) =>{
                     <option hidden>Choose Level</option>
                     {levels.map((level) => (
                       level.zone_id == zoneID && level.shelf_id == shelfID ?
-                      <option value={level.id}>{level.level_name}</option>
+                      <option value={level.id} key={level.id}>{level.level_name}</option>
                       : ""
                     ))}
                   </select>
@@ -505,7 +505,7 @@ const wareHouse = (e) =>{
                       name="wareh_site"
                       id="wh"
                     />
-                    <label className="form-check-label" for="wh">
+                    <label className="form-check-label" htmlFor="wh">
                       Warehouse
                     </label>
                   </div>
@@ -518,7 +518,7 @@ const wareHouse = (e) =>{
                       name="wareh_site"
                       id="si"
                     />
-                    <label className="form-check-label" for="si">
+                    <label className="form-check-label" htmlFor="si">
                       Site
                     </label>
                   </div>
@@ -536,7 +536,7 @@ const wareHouse = (e) =>{
                       name="ware_house_type"
                       id="mwh"
                     />
-                    <label className="form-check-label" for="mwh">  
+                    <label className="form-check-label" htmlFor="mwh">  
                       Main Warehouse
                     </label>
                   </div>
@@ -549,7 +549,7 @@ const wareHouse = (e) =>{
                       name="ware_house_type"
                       id="rwh"
                     />
-                    <label className="form-check-label" for="rwh">
+                    <label className="form-check-label" htmlFor="rwh">
                       Regional Warehouse
                     </label>
                   </div>
@@ -558,7 +558,7 @@ const wareHouse = (e) =>{
               }
               {
                 showWarehouse ? <div className="col-6">
-                <label for="exampleFormControlInput1" className="form-label">
+                <label htmlFor="exampleFormControlInput1" className="form-label">
                   Regional Warehouses
                 </label>
                 <select
@@ -570,7 +570,7 @@ const wareHouse = (e) =>{
                 >
                   <option hidden>Choose Regional Warehouses</option>
                   {getregwarehouse.map((regwh) => (
-                    <option value={regwh.id}>{regwh.warehouse_name}</option>
+                    <option value={regwh.id} key={regwh.id}>{regwh.warehouse_name}</option>
                   ))}
                 </select>
               </div> : ''

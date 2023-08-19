@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Nav from '../../Sidebar/Nav'
 import { Badge, Button, Card, Table } from 'react-bootstrap'
 import { api } from '../../../api/apiResource'
@@ -90,8 +90,8 @@ const RegionalWarehouseTransferList = () => {
                 <tbody>
                   {
                       lists.map((list,index)=>(
-                        <>
-                          <tr className='text-center' key={list.id}>
+                        <Fragment key={list.id}>
+                          <tr className='text-center' >
                               <td>{++index}</td>
                               <td>{list.warehouse_transfer_no}</td>
                               <td>{list.reg_ware?.warehouse_name}</td>
@@ -120,7 +120,7 @@ const RegionalWarehouseTransferList = () => {
                         
                           <TransferListDetail open={open} transferList={transferList}  handleDeliver={handleDeliver}/>
 
-                        </>
+                        </Fragment>
                       ))
                   }
 

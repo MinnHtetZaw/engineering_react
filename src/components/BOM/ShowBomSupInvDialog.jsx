@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
+import { url } from '../../api/urlResource';
 
 
 const Form = styled.form`
@@ -22,7 +23,7 @@ const ShowBomSupInvDialog = (props) => {
         <Form>
               
             <div className='row mt-3'>
-            <img src={`http://localhost:8000/invoice/${props.inv}`} className="img-fluid"/>      
+            <img src={url+`invoice/${props.inv}`} className="img-fluid"/>      
             </div>
             <div className='row mt-4 text-center'>
              <h6>File Name : <span className='text-success'>{props.invname}</span></h6>   

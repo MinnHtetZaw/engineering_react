@@ -37,14 +37,17 @@ const MaterialIssueList = () => {
             <Card.Body>
                 <Table striped bordered hover>
                     <thead className="text-center bg-info text-white">
-                        <th>#</th>
-                        <th>Material Issue No</th>
-                        <th>Customer Name</th>
-                        <th>Phone</th>
-                        <th>Project</th>
-                        <th>Phase</th>
-                        <th>Action</th>
-                        <th>Status</th>
+                        <tr>
+                            <th>#</th>
+                            <th>Material Issue No</th>
+                            <th>Customer Name</th>
+                            <th>Phone</th>
+                            <th>Project</th>
+                            <th>Phase</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                        </tr>
+                        
                     </thead>
                     <tbody>
                  {

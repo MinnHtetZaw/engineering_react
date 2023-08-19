@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Link} from "react-router-dom";
 import Nav from "../Sidebar/Nav";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import "../../App.css";
 import { useParams } from 'react-router-dom';
 import { DeleteIcon, EditIcon, DetailIcon, EyeIcon } from "../Icons";
 import { api } from './../../api/apiResource';
+import { url } from "../../api/urlResource";
 
 const ButtonB = styled.button`
   margin-right: 10px;
@@ -67,7 +68,7 @@ const RegWhProducts = () => {
 
   return (
     <div>
-      {console.log(products)}
+
       <Nav />
       <div className="flex">
         <h5 className="col-10 fw-normal text-secondary fb">Regional Warehouse Products List</h5>
@@ -116,15 +117,15 @@ const RegWhProducts = () => {
                     </thead>
                     <tbody>
                       {products.map((product) => (
-                        <>
-                          <tr key={product.id}>
+                        <Fragment  key={product.id}>
+                          <tr>
                             <td className="p-2 text-center ff bod-li">
                               {product.id}
                             </td>
                             <td className="p-2 text-center ff bod-li">
                               <img
                                 className="img"
-                                src={`http://localhost:8000/images/${product.product_img}`}
+                                src={url+`images/${product.product_img}`}
                                 alt="Product Image"
                               />
                             </td>
@@ -186,7 +187,7 @@ const RegWhProducts = () => {
                             </Td>
                           </tr>
                           <tr id={"show" + product.id} hidden>
-                            <td colspan="10">
+                            <td colSpan="10">
                               <div>
                                 <table className="table bg-light">
                                   <thead className="bg-soft text-light">
@@ -200,16 +201,14 @@ const RegWhProducts = () => {
                                   </thead>
                                   <tbody>
                                     {items.map((item, i) =>
-                                      item.product_id == product.id ? (
-                                        <tr className="text-center">
+                                      item.product_id == product.id && (
+                                        <tr className="text-center" key={i}>
                                           <td className="bod-li">{item.serial_no}</td>
                                           <td className="bod-li">{item.size}</td>
                                           <td className="bod-li">{item.color}</td>
                                           <td className="bod-li">{item.dimension}</td>
                                           <td className="bod-li">{item.unit_purchase_price}</td>
                                         </tr>
-                                      ) : (
-                                        ""
                                       )  
                                     )}
                                   </tbody>
@@ -217,7 +216,7 @@ const RegWhProducts = () => {
                               </div>
                             </td>
                           </tr>
-                        </>
+                        </Fragment>
                       ))}
                     </tbody>
                   </table>
