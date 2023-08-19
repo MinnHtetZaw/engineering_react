@@ -28,7 +28,7 @@ const TransferListDetail = ({open,transferList,handleDeliver}) => {
  
   return (
     <>
-    <tr>
+    <tr hidden={!open}>
                           <td colSpan={9}>
     <Collapse in={open}>
         <div id="transfer-detail" className='col-10 offset-1'>

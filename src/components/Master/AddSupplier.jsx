@@ -54,40 +54,6 @@ const AddSupplier = () => {
     }
 
 
-  // const brands = [
-  //   {
-  //     id: 1, Brand: 'First Brand'
-  //   },
-  //   {
-  //     id: 2, Brand: 'Second Brand'
-  //   },
-  //   {
-  //     id: 3, Brand: 'Third Brand'
-  //   },
-  //   {
-  //     id: 4, Brand: 'Fourth Brand'
-  //   },
-  // ]
-
-  // const [brandoptions] = useState(brands);
-
-  // const socials = [
-  //   {
-  //     id: 1, Logo: 'Facebook'
-  //   },
-  //   {
-  //     id: 2, Logo: 'LinkIn'
-  //   },
-  //   {
-  //     id: 3, Logo: 'Twitter'
-  //   },
-  //   {
-  //     id: 4, Logo: 'Google'
-  //   },
-  // ]
-
-  // const [socialoptions] = useState(socials);
-
   return (
     <div>
       <Nav />
