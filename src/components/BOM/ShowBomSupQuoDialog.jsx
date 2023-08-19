@@ -5,12 +5,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
+import { url } from './../../api/urlResource';
 
 const Form = styled.form`
     display: flex;
     flex-direction: column;
 `
 const ShowBomSupQuoDialog = (props) => {
+
+
   
   return (
     <div>
@@ -20,7 +23,7 @@ const ShowBomSupQuoDialog = (props) => {
         <Form>
               
             <div className='row mt-3'>
-            <img src={`http://localhost:8000/quotation/${props.quo}`} className="img-fluid"/>      
+            <img src={url+`quotation/${props.quo}`} className="img-fluid"/>      
             </div>
             <div className='row mt-4 text-center'>
              <h6>File Name : <span className='text-success'>{props.quoname}</span></h6>   

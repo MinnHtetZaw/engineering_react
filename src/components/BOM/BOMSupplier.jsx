@@ -113,7 +113,7 @@ const BOMSupplier = () => {
                 </thead>
                 <tbody>
                   {boms.map((bom, index) => (
-                    <tr scope="col" className="fw-normal text-center" style={{ 'font-size': '14px' }}>
+                    <tr scope="col" className="fw-normal text-center" style={{ 'font-size': '14px' }} key={index}>
                       <td >{++index}</td>
                       <td>{bom.request_no}</td>
                       <td>{bom.request_quotation_date}</td>
@@ -130,8 +130,8 @@ const BOMSupplier = () => {
                           </button>
                           <ul className="dropdown-menu">
                           {bom.quotation_reply_date != null ?
-                            <li><a className="dropdown-item" onClick={()=>showFile(bom.id,bom.request_no)}>View Quotation File</a></li> :
-                            <li><a className="dropdown-item" onClick={() => showQuotation(bom.id,bom.request_no)}>Quotation</a></li>
+                            <li><button className="dropdown-item" onClick={()=>showFile(bom.id,bom.request_no)}>View Quotation File</button></li> :
+                            <li><button className="dropdown-item" onClick={() => showQuotation(bom.id,bom.request_no)}>Quotation</button></li>
                           }
                           {bom.po_sent_date == null ?
                             <li>
