@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
 
-const CreateWarehouseTransfer = () => {
+const   CreateWarehouseTransfer = () => {
 
     const nav = useNavigate()
 

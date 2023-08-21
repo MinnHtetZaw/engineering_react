@@ -20,7 +20,7 @@ const TransferListDetail = ({open,transferList,handleDeliver}) => {
 
     }catch(error)
     {
-        console.error();
+        console.error(error);
     }
        
   }
