@@ -8,6 +8,14 @@ const SidebarRegional = ({displaySidebar}) => {
   return (
     <>
      <ItemContainer>
+          <Link className="no_underline" to="/regional/inventory">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Inventory</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
+     <ItemContainer>
           <Link className="no_underline" to="/regional_warehouse_transfer/list">
             <ItemWrapper>
               <CostCenterIcon />
@@ -20,6 +28,14 @@ const SidebarRegional = ({displaySidebar}) => {
             <ItemWrapper>
               <CostCenterIcon />
               <ItemName displaySidebar={displaySidebar}>Delivery Order List</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
+        <ItemContainer>
+          <Link className="no_underline" to="/regional/good_receive_notes">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Good Receive Notes</ItemName>
             </ItemWrapper>
           </Link>
         </ItemContainer>

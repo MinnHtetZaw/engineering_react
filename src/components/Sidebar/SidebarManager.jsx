@@ -61,6 +61,14 @@ const SidebarManager = ({displaySidebar}) => {
           </Link>
         </ItemContainer>
         <ItemContainer>
+          <Link className="no_underline" to="/manager/delivery_order/list">
+            <ItemWrapper>
+              <UserIcon />
+              <ItemName displaySidebar={displaySidebar}>Approve Delivery Order</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
+        <ItemContainer>
           <Link className="no_underline" to="/check_warehouse_transfer">
             <ItemWrapper>
               <UserIcon />

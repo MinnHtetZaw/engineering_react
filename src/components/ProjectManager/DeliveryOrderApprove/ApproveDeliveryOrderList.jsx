@@ -2,15 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { api } from '../../../api/apiResource'
 import Nav from '../../Sidebar/Nav'
 import { Badge, Button, Card, Table } from 'react-bootstrap'
-import ReceivePersonDialog from './ReceivePersonDialog'
-import DoDetailDialog from './DoDetailDialog'
+import swal from 'sweetalert'
 
-const DOList = () => {
+const ApproveDeliveryOrderList = () => {
 
   const [doList,setDOList]=useState([])
-  const [show,setShow] = useState(false)
-  const [doData,setDO] = useState({})
-  const [show1,setShow1] = useState(false)
+  
 
   const getDOList=async()=>{
     try{
@@ -29,14 +26,14 @@ const DOList = () => {
 
   },[])
 
-  const handleDialog=(val)=>{
-    setDO(val)
-    setShow(!show)
+  const handleApprove=async(id)=>{
+    
+    const res = await api.post('site_delivery_order/approve',{ id : id})
+
+    swal('Approved','Successfully Approve DO!','success')
+     setDOList(res.data.data)
   }
-  const handleDetailDialog=(val)=>{
-    setDO(val)
-    setShow1(!show1)
-  }
+  
   return (
    <Fragment>
 
@@ -45,7 +42,7 @@ const DOList = () => {
         <h5 className='fst-italic'> Deilvery Order List</h5>
     </div>
     <div className='container'>
-    <Card className='shadow border-0 m-5'>
+    <Card>
       <Card.Body>
         <Table striped>
           <thead className='text-white' style={{backgroundColor:"gray"}}>
@@ -57,8 +54,7 @@ const DOList = () => {
               <th>Phase Name</th>
               <th>Delivery Date</th>
               <th>location</th>
-              <th>Update / Required Item</th>
-              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -74,14 +70,13 @@ const DOList = () => {
                   <td>{list.delivery_date ? list.delivery_date : <span className='fw-bold text-danger'>not yet</span>  }</td>
                   <td>{list.location ? list.location :  <span className='fw-bold text-danger'>not yet</span> }</td>
                   <td>
-                  <Button variant='warning' size='sm' className='me-1' onClick={()=>handleDialog(list)}>Add Info
-                  </Button>
-                  <Button variant='primary' size='sm' onClick={()=>handleDetailDialog(list)}>Detail
-                  </Button>
-                  </td>
-                  <td>
-                  {list.status == 0 && <span className='fw-bold text-warning'>Pending</span>}
-                  {list.status == 1 && <span className='fw-bold text-success'>Approved</span>}
+                  <Button variant='primary' size='sm' className='me-1'>Detail</Button>
+                  {list.status == 0 &&
+             
+                    <Button variant='danger' size='sm' onClick={()=>handleApprove(list.id)}>Approve</Button>
+              
+                  }
+                  {list.status == 1 && <span> <Badge bg='success'>Done</Badge></span>}
     
                   </td>
               </tr>
@@ -92,11 +87,8 @@ const DOList = () => {
       </Card.Body>
     </Card>
     </div>
-    <DoDetailDialog open={show1} close={()=>setShow1(!show1)} doData={doData}/>
-
-    <ReceivePersonDialog open={show} close={()=>setShow(!show)} doData={doData} setDOList={setDOList}/>
     </Fragment>
   )
 }
 
-export default DOList
+export default ApproveDeliveryOrderList

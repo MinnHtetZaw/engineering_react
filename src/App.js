@@ -52,6 +52,9 @@ import WarehouseTransferList from "./components/Warehouse/WarehouseTransfer/Ware
 import CreateWarehouseTransfer from "./components/Warehouse/WarehouseTransfer/CreateWarehouseTransfer";
 import RegionalWarehouseTransferList from "./components/RegionalWarehouse/WarehouseTransfer/RegioinalWarehouseTransferList";
 import DOList from "./components/RegionalWarehouse/DeliveryOrder/DOList";
+import ApproveDeliveryOrderList from "./components/ProjectManager/DeliveryOrderApprove/ApproveDeliveryOrderList";
+import GoodReceiveNotesList from "./components/RegionalWarehouse/GoodReceiveNotes/GoodReceiveNotesList";
+import RegionalInventory from "./components/RegionalWarehouse/Inventory/RegionalInventory";
 
 function App() {
   
@@ -137,6 +140,11 @@ function App() {
 
       <Route path="/regional_warehouse_transfer/list" element={<RegionalWarehouseTransferList/>} />
       <Route path="/delivery_order/list" element={<DOList/>}/>
+      <Route path="/manager/delivery_order/list"  element={<ApproveDeliveryOrderList/>} />
+
+      <Route path="/regional/good_receive_notes" element={<GoodReceiveNotesList/>} />
+      <Route path="/regional/inventory" element={<RegionalInventory/>} />
+
        {dummyData &&
          dummyData.map((item, index) => (
            <Route
