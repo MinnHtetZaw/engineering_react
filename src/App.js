@@ -51,6 +51,7 @@ import WarehouseTransferMonitor from "./components/ProjectManager/Monitor/Wareho
 import WarehouseTransferList from "./components/Warehouse/WarehouseTransfer/WarehouseTransferList";
 import CreateWarehouseTransfer from "./components/Warehouse/WarehouseTransfer/CreateWarehouseTransfer";
 import RegionalWarehouseTransferList from "./components/RegionalWarehouse/WarehouseTransfer/RegioinalWarehouseTransferList";
+import DOList from "./components/RegionalWarehouse/DeliveryOrder/DOList";
 
 function App() {
   
@@ -135,7 +136,7 @@ function App() {
       <Route path="/warehouse_transfer/create" element={<CreateWarehouseTransfer/>} />
 
       <Route path="/regional_warehouse_transfer/list" element={<RegionalWarehouseTransferList/>} />
-      
+      <Route path="/delivery_order/list" element={<DOList/>}/>
        {dummyData &&
          dummyData.map((item, index) => (
            <Route

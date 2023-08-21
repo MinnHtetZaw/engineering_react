@@ -15,6 +15,14 @@ const SidebarRegional = ({displaySidebar}) => {
             </ItemWrapper>
           </Link>
         </ItemContainer>
+        <ItemContainer>
+          <Link className="no_underline" to="/delivery_order/list">
+            <ItemWrapper>
+              <CostCenterIcon />
+              <ItemName displaySidebar={displaySidebar}>Delivery Order List</ItemName>
+            </ItemWrapper>
+          </Link>
+        </ItemContainer>
     </>
   )
 }
