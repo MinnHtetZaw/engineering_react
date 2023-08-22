@@ -1,15 +1,15 @@
 /* eslint-disable eqeqeq */
 import React, { useEffect, useState } from 'react'
-import Nav from '../Sidebar/Nav'
-import {AddIcon,EyeIcon ,ListIcon} from "../Icons";
+import Nav from '../../components/Sidebar/Nav'
+import {AddIcon,EyeIcon ,ListIcon} from "../../components/Icons";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import {api} from '../../utilities/api/apiResource'
 import { Collapse } from '@mui/material';
 
 import  PhotoCameraIcon  from '@mui/icons-material/PhotoCamera';
-import ReportReqPhotoDialog from './ReportReqPhotoDialog';
-import ReportReqVideoDialog from './ReportReqVideoDialog';
+import ReportReqPhotoDialog from '../../components/Request/ReportReqPhotoDialog';
+import ReportReqVideoDialog from '../../components/Request/ReportReqVideoDialog';
 
 
 const RequestMaintenance = () => {

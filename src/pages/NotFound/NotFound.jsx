@@ -1,5 +1,5 @@
 import React from 'react'
-import background from "../../images/404/Na_June_67.jpg"
+import background from "../../assets/images/404/Na_June_67.jpg"
 import styled from 'styled-components'
 
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Nav from '../Sidebar/Nav'
+import Nav from '../../components/Sidebar/Nav'
 import { api } from '../../utilities/api/apiResource'
-import AddSaleProduct from './AddSaleProduct'
-import { Minus, Plus } from '../Icons'
+import AddSaleProduct from '../../components/SalesOrder/AddSaleProduct'
+import { Minus, Plus } from '../../components/Icons'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
 

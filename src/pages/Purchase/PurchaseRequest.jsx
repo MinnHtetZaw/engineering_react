@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import Nav from './../Sidebar/Nav';
+import Nav from '../../components/Sidebar/Nav';
 import { api } from '../../utilities/api/apiResource';
 import swal from 'sweetalert';
-import ShowDestination from './ShowDestination';
+import ShowDestination from '../../components/Purchase/ShowDestination';
 
 const PurchaseRequest = () => {
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Nav from '../Sidebar/Nav'
+import Nav from '../../components/Sidebar/Nav'
 import { api } from '../../utilities/api/apiResource'
 import { Link } from 'react-router-dom';
-import SalesOrderDetailDialog from './SalesOrderDetailDialog';
-import StockCheckDialog from './StockCheckDialog';
+import SalesOrderDetailDialog from '../../components/SalesOrder/SalesOrderDetailDialog';
+import StockCheckDialog from '../../components/SalesOrder/StockCheckDialog';
 
 const SalesOrderList = () => {
 

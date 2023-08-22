@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Nav from './../Sidebar/Nav';
+import Nav from '../../components/Sidebar/Nav';
 import { api } from '../../utilities/api/apiResource';
-import RequestListManager from './RequestListManager';
+import RequestListManager from '../../components/RequestMaterial/RequestListManager';
 import { useSelector } from 'react-redux';
-import RequestListWarehouse from './RequestListWarehouse';
+import RequestListWarehouse from '../../components/RequestMaterial/RequestListWarehouse';
 
 const RequestMaterialList = () => {
 

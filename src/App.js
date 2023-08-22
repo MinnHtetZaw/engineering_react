@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Routes, Route, } from "react-router-dom";
 import { DynamicItem, Sidebar, dummyData,} from "./components";
-import ProjectRegister from "./components/Projects/Projectregister";
-import PhaseList from "./components/Projects/PhaseList";
-import TaskList from "./components/Projects/TaskList";
+import ProjectRegister from "./pages/Projects/Projectregister";
+import PhaseList from "./pages/Projects/PhaseList";
+import TaskList from "./pages/Projects/TaskList";
 import AccountList from "./pages/Accounts/AccountList";
 import BOMList from "./pages/BOM/BOMList";
 import BOMRegister from "./pages/BOM/BOMRegister";
@@ -37,14 +37,14 @@ import CreateAsset from "./pages/Master/Asset/CreateAsset";
 import AssetDetail from "./pages/Master/Asset/AssetDetail";
 import AddBuilding from "./components/Building/AddBuilding"
 import Building from "./pages/Building/BuildingList"
-import RequestMaintenance from "./components/Request/RequestMaintenance";
-import AddRequest from "./components/Request/AddRequest";
-import ShowRequestDetail from "./components/Request/ShowRequestDetail";
-import RequestMaterialList from "./components/RequestMaterial/RequestMaterialList";
-import SalesOrderList from "./components/SalesOrder/SalesOrderList";
-import AddSalesOrder from "./components/SalesOrder/AddSalesOrder";
+import RequestMaintenance from "./pages/Request/RequestMaintenance";
+import AddRequest from "./pages/Request/AddRequest";
+import ShowRequestDetail from "./pages/Request/ShowRequestDetail";
+import RequestMaterialList from "./pages/RequestMaterial/RequestMaterialList";
+import SalesOrderList from "./pages/SalesOrder/SalesOrderList";
+import AddSalesOrder from "./pages/SalesOrder/AddSalesOrder";
 import Login from "./pages/Login/Login";
-import PurchaseRequest from "./components/Purchase/PurchaseRequest";
+import PurchaseRequest from "./pages/Purchase/PurchaseRequest";
 import MaterialIssueList from "./components/Warehouse/MaterialIssue/MaterialIssueList";
 import WarehouseTransferMonitor from "./components/ProjectManager/Monitor/WarehouseTransferMonitor";
 import WarehouseTransferList from "./components/Warehouse/WarehouseTransfer/WarehouseTransferList";

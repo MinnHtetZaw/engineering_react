@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react'
-import Nav from "../Sidebar/Nav"
+import Nav from "../../components/Sidebar/Nav"
 import {api} from '../../utilities/api/apiResource';
 import { Link, useParams } from "react-router-dom";
-import TaskDialog from './TaskDialog'
+import TaskDialog from '../../components/Projects/TaskDialog'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import InfoIcon from '@mui/icons-material/Info';
 

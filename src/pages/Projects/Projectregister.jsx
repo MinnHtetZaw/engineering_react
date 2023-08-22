@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
-import Nav from "../Sidebar/Nav"
-import AccDialog from "./AccDialog"
-import AccDialogOne from "./AccDialogOne"
+import Nav from "../../components/Sidebar/Nav"
+import AccDialog from "../../components/Projects/AccDialog"
+import AccDialogOne from "../../components/Projects/AccDialogOne"
 import {useSelector} from "react-redux"
 import { api } from "../../utilities/api/apiResource";
 import { useNavigate } from 'react-router-dom'

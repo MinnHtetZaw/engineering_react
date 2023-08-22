@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { Link } from "react-router-dom";
 
 import {api} from '../../utilities/api/apiResource'
-import PhaseDialog from './PhaseDialog'
+import PhaseDialog from '../../components/Projects/PhaseDialog'
 import AddIcon from '@mui/icons-material/Add';
 import InfoIcon from '@mui/icons-material/Info';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';

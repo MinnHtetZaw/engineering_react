@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Nav from '../Sidebar/Nav'
+import Nav from '../../components/Sidebar/Nav'
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../utilities/api/apiResource';
