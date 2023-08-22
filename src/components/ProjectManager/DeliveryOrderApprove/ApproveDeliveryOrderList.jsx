@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { api } from '../../../api/apiResource'
+import { api } from '../../../utilities/api/apiResource'
 import Nav from '../../Sidebar/Nav'
 import { Badge, Button, Card, Table } from 'react-bootstrap'
 import swal from 'sweetalert'

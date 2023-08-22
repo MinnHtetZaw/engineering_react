@@ -7,7 +7,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
 import swal from 'sweetalert';
 import { useLocation } from 'react-router-dom';
-import { api } from '../../api/apiResource';
+import { api } from '../../utilities/api/apiResource';
 
 const Form = styled.form`
     display: flex;

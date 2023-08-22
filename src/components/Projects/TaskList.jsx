@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Nav from '../Sidebar/Nav'
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import { api } from '../../api/apiResource'
+import { api } from '../../utilities/api/apiResource'
 import InfoIcon from '@mui/icons-material/Info'
 import { useParams } from 'react-router-dom'
 import ReportPhotoDialog from './ReportPhotoDialog';

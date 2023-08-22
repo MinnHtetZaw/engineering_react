@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
 import {useDispatch} from "react-redux";
-import {addAccount} from "../../redux/accountRedux"
+import {addAccount} from "../../utilities/redux/accountRedux"
 
 const Form = styled.form`
     display: flex;

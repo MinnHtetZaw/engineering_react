@@ -5,9 +5,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { changeEdit } from "../../redux/bomRedux";
+import { changeEdit } from "../../utilities/redux/bomRedux";
 import swal from "sweetalert";
-import { api } from './../../api/apiResource';
+import { api } from '../../utilities/api/apiResource';
 
 const Form = styled.form`
   min-width: 100%;

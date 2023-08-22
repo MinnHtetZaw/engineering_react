@@ -12,14 +12,14 @@ import {
 // import BrandLogo from "./BrandLogo.svg";
 
 import { SidebarItems } from "..";
-import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MOBILE_VIEW = window.innerWidth < 468;
 
 export default function Sidebar({ children }) {
   const [displaySidebar, setDisplaySidebar] = useState(!MOBILE_VIEW);
 
-  const location = useLocation()
+  const isLogin =useSelector(state=>state.user.isLogin)
 
   const handleSidebarDisplay = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ export default function Sidebar({ children }) {
   return (
     <React.Fragment>
       {
-        location.pathname !== '/login' && (
+        isLogin === true && (
           <SidebarContainer displaySidebar={displaySidebar}>
         <SidebarWrapper>
           <SidebarLogoWrapper displaySidebar={displaySidebar}>
@@ -68,7 +68,7 @@ export default function Sidebar({ children }) {
       }
             {/* Render the children */}
             {
-              location.pathname === '/login' ? 
+              isLogin === false ? 
               <Children displaySidebar={displaySidebar} style={{ marginLeft: 0 }}>{children}</Children>
             : <Children displaySidebar={displaySidebar}>{children}</Children>
             }

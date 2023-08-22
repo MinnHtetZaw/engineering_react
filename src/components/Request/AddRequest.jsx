@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Nav from '../Sidebar/Nav'
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
-import { api } from '../../api/apiResource';
+import { api } from '../../utilities/api/apiResource';
 
 
 const AddRequest = () => {

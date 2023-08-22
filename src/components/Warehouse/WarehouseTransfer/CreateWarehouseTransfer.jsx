@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Nav from '../../Sidebar/Nav'
 import { Button, Card, Form, InputGroup } from 'react-bootstrap'
-import { api } from '../../../api/apiResource'
+import { api } from '../../../utilities/api/apiResource'
 import IssuesList from './IssuesList'
 import AddIssueList from './AddIssueList'
 import { useDispatch, useSelector } from 'react-redux'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
-import { resetIssue } from '../../../redux/issueRedux'
+import { resetIssue } from '../../../utilities/redux/issueRedux'
 
 const   CreateWarehouseTransfer = () => {
 

@@ -5,7 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import { api } from '../../api/apiResource';
+import { api } from '../../utilities/api/apiResource';
 import swal from 'sweetalert';
 import { Badge } from 'react-bootstrap';
 

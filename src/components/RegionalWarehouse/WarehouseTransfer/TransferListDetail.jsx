@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Badge, Button, Collapse,Table } from 'react-bootstrap'
-import { api } from '../../../api/apiResource'
+import { api } from '../../../utilities/api/apiResource'
 import ProductDialog from './ProductDialog'
 import { DeliverIcon } from '../../Icons'
 

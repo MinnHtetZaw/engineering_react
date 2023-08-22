@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import Nav from '../../Sidebar/Nav'
 import { Button, Card, Table } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import { api } from '../../../api/apiResource'
+import { api } from '../../../utilities/api/apiResource'
 import { LoadingDialog } from '../../Loading'
 import TransferDetailList from './TransferDetailList'
 

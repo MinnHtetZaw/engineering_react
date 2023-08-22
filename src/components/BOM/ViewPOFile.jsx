@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
-import { url } from '../../api/urlResource';
+import { url } from '../../utilities/api/urlResource';
 
 const Form = styled.form`
     display: flex;

@@ -6,8 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
 import { useDispatch,useSelector } from 'react-redux';
-import { addProduct,changeStatus } from '../../redux/bomRedux';
-import { api } from '../../api/apiResource';
+import { addProduct,changeStatus } from '../../utilities/redux/bomRedux';
+import { api } from '../../utilities/api/apiResource';
 
 const Form = styled.form`
     display: flex;

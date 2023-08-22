@@ -4,7 +4,7 @@ import Nav from '../Sidebar/Nav'
 import {AddIcon,EyeIcon ,ListIcon} from "../Icons";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import {api} from '../../api/apiResource'
+import {api} from '../../utilities/api/apiResource'
 import { Collapse } from '@mui/material';
 
 import  PhotoCameraIcon  from '@mui/icons-material/PhotoCamera';

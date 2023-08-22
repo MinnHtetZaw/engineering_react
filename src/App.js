@@ -1,52 +1,50 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 import { DynamicItem, Sidebar, dummyData,} from "./components";
 import ProjectRegister from "./components/Projects/Projectregister";
 import PhaseList from "./components/Projects/PhaseList";
 import TaskList from "./components/Projects/TaskList";
-import AccountList from "./components/Accounts/AccountList";
-import BOMList from "./components/BOM/BOMList";
-import BOMRegister from "./components/BOM/BOMRegister";
-import BOMSupplier from "./components/BOM/BOMSupplier";
-import BOMRequestRegister from "./components/BOM/BOMRequestRegister";
-import BOMSupplierPurchaseOrder from "./components/BOM/BOMSupplierPurchaseOrder";
-import BOMSupplierPurchaseOrderView from "./components/BOM/BOMSupplierPurchaseOrderView";
+import AccountList from "./pages/Accounts/AccountList";
+import BOMList from "./pages/BOM/BOMList";
+import BOMRegister from "./pages/BOM/BOMRegister";
+import BOMSupplier from "./pages/BOM/BOMSupplier";
+import BOMRequestRegister from "./pages/BOM/BOMRequestRegister";
+import BOMSupplierPurchaseOrder from "./pages/BOM/BOMSupplierPurchaseOrder";
+import BOMSupplierPurchaseOrderView from "./pages/BOM/BOMSupplierPurchaseOrderView";
 import "./App.css";
-import Categories from "./components/Master/Categories";
-import SubCategories from "./components/Master/SubCategories";
-import Brands from "./components/Master/Brands";
-import Products from "./components/Master/Products";
-import Customers from "./components/Pages/Customers";
-import CostCenter from "./components/Pages/CostCenter";
-import ProductDetail from "./components/Master/ProductDetail";
-import AddProduct from "./components/Master/AddProduct";
-import Suppliers from "./components/Master/Suppliers";
-import AddSupplier from "./components/Master/AddSupplier";
-import Comparison from "./components/Master/Comparison";
-import AddItem from "./components/Master/AddItem";
-import Currency from "./components/Pages/Currency";
-import RegionalWarehouse from "./components/Master/RegionalWarehouse";
-import AddRegWarehouse from "./components/Master/AddRegWarehouse";
-import RegWhProducts from "./components/Master/RegWhProducts";
+import Categories from "./pages/Master/Category/Categories";
+import SubCategories from "./pages/Master/SubCategory/SubCategories";
+import Brands from "./pages/Master/Brand/Brands";
+import Products from "./pages/Master/Product/Products";
+import Customers from "./pages/CostCenter/Customers";
+import CostCenter from "./pages/CostCenter/CostCenter";
+import ProductDetail from "./pages/Master/Product/ProductDetail";
+import AddProduct from "./pages/Master/Product/AddProduct";
+import Suppliers from "./pages/Master/Supplier/Suppliers";
+import AddSupplier from "./pages/Master/Supplier/AddSupplier";
+import Comparison from "./pages/Master/Product/Comparison";
+import AddItem from "./pages/Master/Item/AddItem";
+import Currency from "./pages/CostCenter/Currency";
+import RegionalWarehouse from "./pages/RegionalWarehouse/RegionalWarehouse";
+import AddRegWarehouse from "./pages/RegionalWarehouse/AddRegWarehouse";
+import RegWhProducts from "./pages/RegionalWarehouse/RegWhProducts";
 import SiteItems from "./components/Master/Sites/SiteItems";
-import Zones from "./components/Master/Zones";
-import GRN from "./components/BOM/GRN"
-import AddGRNItem from './components/BOM/AddGRNItem';
-import Asset from './components/Master/Asset';
-import CreateAsset from "./components/Master/CreateAsset";
-import AssetDetail from "./components/Master/AssetDetail";
+import Zones from "./pages/Master/Zone/Zones";
+import GRN from "./pages/BOM/GRN"
+import AddGRNItem from './pages/BOM/AddGRNItem';
+import Asset from './pages/Master/Asset/Asset';
+import CreateAsset from "./pages/Master/Asset/CreateAsset";
+import AssetDetail from "./pages/Master/Asset/AssetDetail";
 import AddBuilding from "./components/Building/AddBuilding"
-import Building from "./components/Building/BuildingList"
+import Building from "./pages/Building/BuildingList"
 import RequestMaintenance from "./components/Request/RequestMaintenance";
 import AddRequest from "./components/Request/AddRequest";
 import ShowRequestDetail from "./components/Request/ShowRequestDetail";
 import RequestMaterialList from "./components/RequestMaterial/RequestMaterialList";
 import SalesOrderList from "./components/SalesOrder/SalesOrderList";
 import AddSalesOrder from "./components/SalesOrder/AddSalesOrder";
-import Login from "./components/Login/Login";
+import Login from "./pages/Login/Login";
 import PurchaseRequest from "./components/Purchase/PurchaseRequest";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 import MaterialIssueList from "./components/Warehouse/MaterialIssue/MaterialIssueList";
 import WarehouseTransferMonitor from "./components/ProjectManager/Monitor/WarehouseTransferMonitor";
 import WarehouseTransferList from "./components/Warehouse/WarehouseTransfer/WarehouseTransferList";
@@ -56,18 +54,10 @@ import DOList from "./components/RegionalWarehouse/DeliveryOrder/DOList";
 import ApproveDeliveryOrderList from "./components/ProjectManager/DeliveryOrderApprove/ApproveDeliveryOrderList";
 import GoodReceiveNotesList from "./components/RegionalWarehouse/GoodReceiveNotes/GoodReceiveNotesList";
 import RegionalInventory from "./components/RegionalWarehouse/Inventory/RegionalInventory";
+import ProtectedRoutes from "./ProtectedRoutes";
+import { NotFound } from "./pages/NotFound/NotFound";
 
 function App() {
-  
-  const isLogin =useSelector(state=>state.user.isLogin)
-  const location = useLocation()
-  const nav = useNavigate()
-  
-  useEffect(()=>{
-
-    isLogin === false && 
-    nav('/login')
-  },[location.pathname])
 
   return (
 
@@ -77,6 +67,9 @@ function App() {
        <Routes>
        
        <Route path="/login" element={<Login/>} />
+       <Route path="*" element={<NotFound/>}/>
+       
+       <Route element={<ProtectedRoutes/>}>
        <Route path="/" element={<DynamicItem page="homepage" />} />
 
        <Route path="/project_register" element={<ProjectRegister/>}/>
@@ -154,7 +147,7 @@ function App() {
              element={<DynamicItem page={item.name} />}
            />
          ))}
-         
+      </Route>
      </Routes>
      </Sidebar>
 </div>

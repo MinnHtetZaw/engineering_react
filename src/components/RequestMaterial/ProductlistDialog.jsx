@@ -4,7 +4,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
-import { api } from '../../api/apiResource';
+import { api } from '../../utilities/api/apiResource';
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import { Minus, Plus } from '../Icons';

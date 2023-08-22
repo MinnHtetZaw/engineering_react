@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Card, Table } from 'react-bootstrap'
 import { AddIcon } from '../../Icons'
 import { useDispatch } from 'react-redux'
-import { addIssue } from '../../../redux/issueRedux'
+import { addIssue } from '../../../utilities/redux/issueRedux'
 
 const IssuesList = ({issues,contact_person}) => {
 

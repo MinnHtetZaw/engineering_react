@@ -3,7 +3,7 @@ import Nav from "../Sidebar/Nav"
 import AccDialog from "./AccDialog"
 import AccDialogOne from "./AccDialogOne"
 import {useSelector} from "react-redux"
-import { api } from "../../api/apiResource";
+import { api } from "../../utilities/api/apiResource";
 import { useNavigate } from 'react-router-dom'
 
 

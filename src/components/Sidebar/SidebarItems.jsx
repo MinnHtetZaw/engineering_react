@@ -1,5 +1,5 @@
 import React from "react";
-import { LogoutProcess } from "../../redux/userRedux"
+import { LogoutProcess } from "../../utilities/redux/userRedux"
 import {  useNavigate } from "react-router-dom";
 import {ItemsList,  ItemContainer,  ItemWrapper,  ItemName,} from "./SidebarStyles";
 import {LogoutIcon} from "../Icons";

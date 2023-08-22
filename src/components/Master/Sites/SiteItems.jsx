@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../../App.css';
-import { api } from '../../../api/apiResource';
+import { api } from '../../../utilities/api/apiResource';
 import { Loading } from '../../Loading';
 import Products from './Products';
 import Nav from '../../Sidebar/Nav';

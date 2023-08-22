@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Form } from '../../../style';
 import { Badge, Button } from 'react-bootstrap';
-import { api } from '../../../api/apiResource';
+import { api } from '../../../utilities/api/apiResource';
 import swal from 'sweetalert';
 
 const ReceivePersonDialog = ({open,close,doData,setDOList}) => {

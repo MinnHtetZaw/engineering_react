@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Delete } from '../../Icons'
-import { removeIssue } from '../../../redux/issueRedux'
+import { removeIssue } from '../../../utilities/redux/issueRedux'
 
 const AddIssueList = ({contact_person}) => {
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '../Sidebar/Nav'
-import { api } from '../../api/apiResource'
+import { api } from '../../utilities/api/apiResource'
 import { Link } from 'react-router-dom';
 import SalesOrderDetailDialog from './SalesOrderDetailDialog';
 import StockCheckDialog from './StockCheckDialog';

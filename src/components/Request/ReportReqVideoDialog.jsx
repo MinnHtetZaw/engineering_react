@@ -4,7 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import {url} from "../../api/urlResource"
+import {url} from "../../utilities/api/urlResource"
 
 const ReportReqVideoDialog = (props) => {
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { EyeIcon } from '../Icons'
 import ProductlistDialog from './ProductlistDialog'
-import { api } from '../../api/apiResource'
+import { api } from '../../utilities/api/apiResource'
 import swal from 'sweetalert'
 
 const RequestListManager = ({materials}) => {

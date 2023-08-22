@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Nav from './../Sidebar/Nav';
-import { api } from './../../api/apiResource';
+import { api } from '../../utilities/api/apiResource';
 import swal from 'sweetalert';
 import ShowDestination from './ShowDestination';
 
