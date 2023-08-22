@@ -7,19 +7,21 @@ const issueSlice = createSlice({
     },
     reducers: {
         addIssue: (state, action) => {
-           state.issueList.push(action.payload);
-    
+        
+            action.payload.issue['contact_person']=action.payload.contact_person;
+            state.issueList.push(action.payload.issue);
+            
         },
         removeIssue: (state, action) => {
 
             state.issueList.splice(action.payload,1);
       
         },
-        resetProduct: (state) => {
-          state.grn_item.length = 0; 
+        resetIssue: (state) => {
+          state.issueList.length = 0; 
         }
     }
 })
 
-export const{addIssue,removeIssue,resetProduct} = issueSlice.actions
+export const{addIssue,removeIssue,resetIssue} = issueSlice.actions
 export default issueSlice.reducer;

@@ -8,7 +8,7 @@ const AddIssueList = ({contact_person}) => {
 
     const issueList = useSelector(state=>state.issue.issueList)
     const dipatch = useDispatch()
-
+    
   return (
  
     <div className='col-md-6 my-3'>
@@ -27,7 +27,7 @@ const AddIssueList = ({contact_person}) => {
                         issueList.map((issue,index)=>(
                             <tr key={index}>
                                 <td>{issue.material_issue_no}</td>
-                                <td>{contact_person}</td>
+                                <td>{issue.contact_person}</td>
                                 <td>{issue.total_qty}</td>
                                 <td>
                                     <Button variant='danger' size='sm'

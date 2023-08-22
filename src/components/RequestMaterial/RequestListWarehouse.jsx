@@ -56,11 +56,11 @@ const RequestListWarehouse = ({materials}) => {
                                         <td className="bod-li">{list.request_date}</td>                                   
            
                                         <td className="bod-li">{list.reason ?? "-"}</td>
+                                        <td className="bod-li">{list.from_employee ?? "-"}</td>
                                         <td className="bod-li">
                                           <span className='badge bg-danger'>{list.isApproved}
                                             </span></td>
                                         
-                                        <td className="bod-li">{list.from_employee ?? "-"}</td>
                         
                                           
                                         <td className="bod-li">

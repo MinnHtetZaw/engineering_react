@@ -4,9 +4,10 @@ import { Button, Card, Form, InputGroup } from 'react-bootstrap'
 import { api } from '../../../api/apiResource'
 import IssuesList from './IssuesList'
 import AddIssueList from './AddIssueList'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
+import { resetIssue } from '../../../redux/issueRedux'
 
 const   CreateWarehouseTransfer = () => {
 
@@ -14,6 +15,8 @@ const   CreateWarehouseTransfer = () => {
 
     const dateRef = useRef()
     const issueList = useSelector(state=>state.issue.issueList)
+    const dispatch = useDispatch()
+    
     const [wtoNo,setWtoNo] = useState(null)
     const [regWarehouses,setRegWarehouses] = useState([])
     const [project,setProject] = useState({})
@@ -74,7 +77,10 @@ const   CreateWarehouseTransfer = () => {
                 api.post('warehouse_transfer/create',data)
                 .then((res)=> 
                     swal('Good',res.data.success,'success')
-                    .then(()=>nav('/warehouse_transfer/list')))
+                    .then(()=>dispatch(resetIssue())
+                         .then(()=>nav('/warehouse_transfer/list'))
+                    ))
+                   
                 .catch((error)=>
                 swal('Error','Something Went Wrong...!','error'))    
         }

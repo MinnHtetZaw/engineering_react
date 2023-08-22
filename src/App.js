@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { DynamicItem, Sidebar, dummyData,} from "./components";
 import ProjectRegister from "./components/Projects/Projectregister";

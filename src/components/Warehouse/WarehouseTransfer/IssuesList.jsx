@@ -29,7 +29,7 @@ const IssuesList = ({issues,contact_person}) => {
                                     <td>{contact_person}</td>
                                     <td>{issue.total_qty}</td>
                                     <td>
-                                        <Button variant='primary' size='sm' onClick={()=>dispatch(addIssue(issue))}>
+                                        <Button variant='primary' size='sm' onClick={()=>dispatch(addIssue({issue,contact_person}))}>
                                         <AddIcon fontSize='sm'/> Add
                                         </Button>
                                     </td>
