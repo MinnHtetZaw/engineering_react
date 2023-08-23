@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '../../../components/Sidebar/Nav';
 import { Badge, Button, Card, Table } from 'react-bootstrap';
-import { ThumbUpIcon } from '../../../components/Icons';
 import { api } from '../../../utilities/api/apiResource';
 
 const WarehouseTransferMonitor = () => {
@@ -10,7 +9,7 @@ const WarehouseTransferMonitor = () => {
  
     useEffect(()=>{
         const getIssueList = async()=>{
-            const res = await api.get('material_issue_list')
+            const res = await api.get('materialIssue/list')
             setIssueList(res.data.data)
         }
 
@@ -19,15 +18,19 @@ const WarehouseTransferMonitor = () => {
   return (
    <>
    <Nav/>
-   <Card className='m-4 rounded' >
+   <div className='fs-5 fst-italic ms-5 mt-3'>
+   Check Warehouse Transfer
+   </div>
+   <Card className='m-4 rounded border-0 shadow' >
     <Card.Body>
     <Table striped bordered hover>
-        <thead className='bg-info text-white text-center'>
+        <thead className='bg-primary text-white text-center'>
             <tr>
                 <th>#</th>
                 <th>Material Issue No</th>
                 <th>Project</th>
                 <th>Phase </th>
+                <th>Customer Name</th>
                 <th>Transfer Date</th>
            
                 <th>Regional Warehouse Transfer</th>
@@ -35,23 +38,43 @@ const WarehouseTransferMonitor = () => {
             </tr>
         </thead>
         <tbody>
-            <tr className='text-center'>
-                <td>1</td>
-                <td>Material Issue No</td>
-                <td>Material Issue No</td>
-                <td>@Material Issue No</td>
-                <td>@Material Issue No</td>
-                <td>
-                    <span>
-                        <Badge bg="warning">Pending...</Badge>
-                    </span>
-                </td>
-                <td>  
-                    <span>
-                        <Badge bg="warning">Pending...</Badge>
-                    </span>
-                </td>
-            </tr>
+            {
+                lists.map((list,index)=>(
+                    <tr className='text-center' key={list.id}>
+                        <td>{++index}</td>
+                        <td>{list.material_issue_no}</td>
+                        <td>{list.project_name}</td>
+                        <td>{list.phase_name}</td>
+                        <td>{list.customer_name}</td>
+                        <td>{list.transfer_date}</td>
+                        <td>
+                            
+                        {list.warehouse_transfer_status == 0 &&
+                            <span>
+                                <Badge bg="warning">Pending...</Badge>
+                            </span>}
+
+                        {list.warehouse_transfer_status == 1 &&
+                            <span>
+                                <Badge bg="success">Transferred</Badge>
+                            </span>}
+
+                        </td>
+                        <td>  
+                            {list.delivery_order_status == 0 &&
+                            <span>
+                                <Badge bg="warning">Pending...</Badge>
+                            </span>}
+
+                        {list.delivery_order_status == 1 &&
+                            <span>
+                                <Badge bg="success">Delivered</Badge>
+                            </span>}
+                        </td>
+                    </tr>
+                ))
+            }
+         
       </tbody>
     </Table>
     </Card.Body>

@@ -20,7 +20,6 @@ const AddRegWarehouse = () => {
     });
   }, []);
 
-  console.log(projects)
 
   const navigate = useNavigate();
   
@@ -78,7 +77,7 @@ const AddRegWarehouse = () => {
             <form>
               <div className="row  my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Warehouse Name
                   </label>
                   <input
@@ -91,7 +90,7 @@ const AddRegWarehouse = () => {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlTextarea1" className="form-label">
+                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
                     Warehouse Photo
                   </label>
                   <input
@@ -103,7 +102,7 @@ const AddRegWarehouse = () => {
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Region
                   </label>
                   <input
@@ -116,7 +115,7 @@ const AddRegWarehouse = () => {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Country
                   </label>
                   <input
@@ -131,7 +130,7 @@ const AddRegWarehouse = () => {
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Location Address
                   </label>
                   <input
@@ -144,7 +143,7 @@ const AddRegWarehouse = () => {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Area
                   </label>
                   <input
@@ -159,7 +158,7 @@ const AddRegWarehouse = () => {
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Capacity
                   </label>
                   <input
@@ -172,7 +171,7 @@ const AddRegWarehouse = () => {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Project
                   </label>
                   <select
@@ -184,7 +183,7 @@ const AddRegWarehouse = () => {
                   >
                     <option hidden>Choose Project</option>
                     {projects.map((project) => (
-                      <option value={project.id}>
+                      <option value={project.id} key={project.id}>
                         {project.name}
                       </option>
                     ))}
@@ -193,7 +192,7 @@ const AddRegWarehouse = () => {
               </div>
               <div className="row my-3">
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Email
                   </label>
                   <input
@@ -206,7 +205,7 @@ const AddRegWarehouse = () => {
                   />
                 </div>
                 <div className="col-6">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  <label htmlFor="exampleFormControlInput1" className="form-label">
                     Password
                   </label>
                   <input
