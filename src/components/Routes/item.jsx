@@ -1,5 +1,5 @@
 import Nav from "../Sidebar/Nav"
-import ProjectList from "../../pages/Projects/projectlist"
+import ProjectList from "../../pages/ProjectManager/Projects/projectlist"
 
 const Item = (props) => {
   const { page } = props;

@@ -5,17 +5,7 @@ const AddSaleProduct = ({products ,handleAddProduct}) => {
 
 
     <div className="col-6">
-      {/* <div className="row">
-          <div className="col-4">
-                <div className="form-group">
-                      <select className="form-control" >
-                      
-                        <option>Select Category</option>
-                
-                      </select>
-                </div>
-          </div>
-      </div> */}
+ 
     <div className="row">
      
         <table className="table table-hover table-bordered table-striped">

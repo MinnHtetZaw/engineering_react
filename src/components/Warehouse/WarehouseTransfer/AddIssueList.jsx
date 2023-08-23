@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Delete } from '../../Icons'
 import { removeIssue } from '../../../utilities/redux/issueRedux'
 
-const AddIssueList = ({contact_person}) => {
+const AddIssueList = () => {
 
     const issueList = useSelector(state=>state.issue.issueList)
     const dipatch = useDispatch()
