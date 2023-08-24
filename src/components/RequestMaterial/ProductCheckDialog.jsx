@@ -85,15 +85,13 @@ const ProductCheckDialog = ({open,close,isRequired,list}) => {
              <div className="text-center mt-5">
     {
         
-     
              list.isIssued   == 1 ? <h4><Badge bg='success' size='md'>Material Issue Done!</Badge></h4> :
              isRequired == false  &&   <button className='btn btn-success' onClick={handleIssue}>Material Issue</button>
-
-                            ||        
-            list.isRequested   == 1 ? 
+    }     
+    {       list.isRequested   == 1 ? 
                        <h4><Badge bg='success' size='md'>Request Done!</Badge></h4> 
                       :
-            isRequired == false  &&   <Link to={'/warehouse_purchase_request/'+list.id} state={{data:requiredItems,projects:[list.project_id , list.project_phase_id]}}>
+            isRequired == true  &&   <Link to={'/warehouse_purchase_request/'+list.id} state={{data:requiredItems,projects:[list.project_id , list.project_phase_id]}}>
                       <button className='btn btn-danger'>Purchase Request</button>
                       </Link>
     }

@@ -133,7 +133,7 @@ const TaskList = () => {
                         <td colSpan='10'>
                           <div className='offset-1 col-10'>
                             <table className='table table-hover table-borderless'>
-                              <thead className='bg-info text-light'>
+                              <thead className='bg-secondary text-white'>
                                 <tr className='text-center'>
                                   <th className='bod-li'>No.</th>
                                   <th className='bod-li'>Checked By</th>

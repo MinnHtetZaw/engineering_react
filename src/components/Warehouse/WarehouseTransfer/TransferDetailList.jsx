@@ -1,10 +1,37 @@
-import React from 'react'
-import { Badge, Collapse,Table } from 'react-bootstrap'
+import React, { Fragment, useState } from 'react'
+import { Badge, Button, Collapse,Table } from 'react-bootstrap'
 
-const TransferDetailList = ({open,issues}) => {
+const TransferDetailList = ({list,index}) => {
+
+    const [open, setOpen] = useState(false)
+    const [issueList,setIssueList] = useState({})
+
+    const handleCollapse =(val)=>{
+      setIssueList(val)
+      setOpen(!open)
+    }
+
   return (
     <>
-    <Collapse in={open}>
+     
+                          <tr className='text-center' >
+                              <td>{++index}</td>
+                              <td>{list.warehouse_transfer_no}</td>
+                              <td>{list.reg_ware?.warehouse_name}</td>
+                              <td>{list.total_qty}</td>
+                              <td>{list.date}</td>
+                          <td>
+                          <Button variant='primary' size='sm' aria-controls="transfer-detail"
+                          aria-expanded={open} onClick={()=>handleCollapse(list)}>Detail </Button>  
+                          </td>
+                        </tr>
+                      
+                       
+                            <tr hidden={!open}>
+                            <td colSpan={9}>
+                         
+                    
+                            <Collapse in={open}>
         <div id="transfer-detail">
         <Table>
                     <thead>
@@ -19,7 +46,7 @@ const TransferDetailList = ({open,issues}) => {
                     </thead>
                     <tbody>
                         {
-                            issues.map((issue,index)=>(
+                           issueList.material_issues?.map((issue,index)=>(
                                 <tr className='text-center' key={issue.id}>
                                     <td>{++index}</td>
                                     <td>{issue.material_issue_no}</td>
@@ -43,6 +70,10 @@ const TransferDetailList = ({open,issues}) => {
              
             
     </Collapse>
+                          
+                            </td>
+                          </tr>
+  
     </>
   )
 }

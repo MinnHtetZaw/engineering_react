@@ -16,6 +16,7 @@ const RegionalWarehouseTransferList = () => {
 
   const handleCollapse =(val)=>{
     setTransferList(val)
+    
     setOpen(!open)
   }
 
@@ -117,8 +118,10 @@ const RegionalWarehouseTransferList = () => {
                           </td>
                           
                         </tr>
-                        
+                          {
+                            transferList.id === list.id &&
                           <TransferListDetail open={open} transferList={transferList}  handleDeliver={handleDeliver}/>
+                          }
 
                         </Fragment>
                       ))

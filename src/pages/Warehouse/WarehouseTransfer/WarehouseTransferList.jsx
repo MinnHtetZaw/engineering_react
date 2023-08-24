@@ -10,13 +10,7 @@ const WarehouseTransferList = () => {
  
     const [lists,setLists]=useState([])
     const [isLoading,setIsLoading] = useState(true)
-    const [open, setOpen] = useState(false)
-    const [issues,setIssues] = useState([])
-
-    const handleCollapse =(val)=>{
-      setIssues(val)
-      setOpen(!open)
-    }
+   
     useEffect(()=>{
         const getTransferList = async()=>{
             try{
@@ -62,29 +56,8 @@ const WarehouseTransferList = () => {
                 <tbody>
                   {
                       lists.map((list,index)=>(
-                        <Fragment key={list.id}>
-                          <tr className='text-center' >
-                              <td>{++index}</td>
-                              <td>{list.warehouse_transfer_no}</td>
-                              <td>{list.reg_ware?.warehouse_name}</td>
-                              <td>{list.total_qty}</td>
-                              <td>{list.date}</td>
-                          <td>
-                          <Button variant='primary' size='sm' aria-controls="transfer-detail"
-                          aria-expanded={open} onClick={()=>handleCollapse(list.material_issues)}>Detail </Button>  
-                          </td>
-                        </tr>
-                        <tr hidden={!open}>
-                          <td colSpan={9}>
-                        
-                          <TransferDetailList open={open} issues={issues} />
-
-                        
-                          </td>
-                        </tr>
-                        
-                      
-                        </Fragment>
+                        <TransferDetailList list={list} key={index} index={index}/>
+                       
                       ))
                   }
 
