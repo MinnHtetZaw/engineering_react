@@ -101,7 +101,6 @@ const setVideoDialog=(val)=>{
                                                           <th className="bod-li">Checked by</th>
                                                           <th className="bod-li">Finish Date</th>
                                                           <th className="bod-li">Progress</th>
-                                                          <th className="bod-li">Materials</th>
                                                           <th className="bod-li">Report File</th>
                                                           <th className="bod-li">Performance</th>
 
@@ -117,7 +116,6 @@ const setVideoDialog=(val)=>{
                                                               <td className="bod-li">{report.checked_by}</td>
                                                               <td className="bod-li">{report.finished_date}</td>
                                                               <td className="bod-li">{report.progress}</td>
-                                                              <td className="bod-li"></td>
                                                               <td className="bod-li">
                                                               
                                                               <button className='me-3'> <span className="ml-2 mr-2" onClick={()=>setPhotoDialog(report.files[0].file)}><PhotoCameraIcon color="primary" fontSize="small"/>photo<sup className="bg-secondary text-white rounded px-1">{report.files[0].file.length}</sup></span></button>

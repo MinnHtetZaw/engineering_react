@@ -8,7 +8,7 @@ import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import ListAltOutlinedIcon from "@mui/icons-material/ListAltOutlined";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
-
+import BuildIcon from '@mui/icons-material/Build';
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import CloseIcon from '@mui/icons-material/Close';
@@ -70,4 +70,5 @@ export {
   ThumbUpIcon,
   DeleteIcon as Delete,
   LocalShippingIcon as DeliverIcon,
+  BuildIcon as Wrench,
 };

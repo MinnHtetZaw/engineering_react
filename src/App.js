@@ -56,6 +56,8 @@ import WarehouseTransferMonitor from './pages/ProjectManager/Monitor/WarehouseTr
 import MaterialIssueList from './pages/Warehouse/MaterialIssue/MaterialIssueList';
 import AddBuilding from './components/ProjectManager/Building/AddBuilding';
 import SiteItems from './pages/ProjectManager/Sites/SiteItems';
+import FromList from "./pages/ProjectManager/FromLists/FromList";
+import CreateFrom from "./pages/ProjectManager/FromLists/CreateFrom";
 
 function App() {
 
@@ -138,7 +140,8 @@ function App() {
 
       <Route path="/regional/good_receive_notes" element={<GoodReceiveNotesList/>} />
       <Route path="/regional/inventory" element={<RegionalInventory/>} />
-
+      <Route path="/from_lists" element={<FromList/>}/>
+      <Route path="/create_from" element={<CreateFrom/>}/>
        {dummyData &&
          dummyData.map((item, index) => (
            <Route

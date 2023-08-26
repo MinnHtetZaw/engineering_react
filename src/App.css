@@ -11,7 +11,7 @@
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif; */
 
-  font-family: cursive;
+  font-family: Fira Sans;
 }
 
 #main {
@@ -131,6 +131,7 @@
 tr {
   padding-top: 5px;
 }
+
 
 .bod-li {
   border: 0.5px solid #e6e6e6;

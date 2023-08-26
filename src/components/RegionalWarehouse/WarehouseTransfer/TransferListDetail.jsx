@@ -32,7 +32,7 @@ const TransferListDetail = ({open,transferList,handleDeliver}) => {
                           <td colSpan={9}>
     <Collapse in={open}>
         <div id="transfer-detail" className='col-10 offset-1'>
-        <Table>
+        <Table hover>
                     <thead>
                         <tr className="text-success text-center">
                             <th>#</th>

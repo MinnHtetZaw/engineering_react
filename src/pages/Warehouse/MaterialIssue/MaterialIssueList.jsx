@@ -55,8 +55,8 @@ const MaterialIssueList = () => {
                         <tr className="text-center" key={index}>
                         <td>{++index}</td>
                         <td>{list.material_issue_no}</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>{list.customer_name}</td>
+                        <td>{list.phone}</td>
                         <td>{list.project_name}</td>
                         <td>{list.phase_name}</td>  
                         <td> 

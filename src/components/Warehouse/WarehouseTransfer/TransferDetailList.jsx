@@ -33,7 +33,7 @@ const TransferDetailList = ({list,index}) => {
                     
                             <Collapse in={open}>
         <div id="transfer-detail">
-        <Table>
+        <Table hover>
                     <thead>
                         <tr className="text-success text-center">
                             <th>#</th>

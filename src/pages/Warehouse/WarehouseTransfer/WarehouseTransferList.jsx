@@ -42,7 +42,7 @@ const WarehouseTransferList = () => {
 
         <Card className='shadow border-0 mt-5' >
           <Card.Body>
-              <Table striped hover>
+              <Table striped>
                   <thead>
                   <tr className="text-success text-center">
                     <th>#</th>
