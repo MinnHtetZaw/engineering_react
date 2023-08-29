@@ -3,7 +3,7 @@ import { Button, Card, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Nav from '../../../components/Sidebar/Nav'
 import { Plus, Wrench } from '../../../components/Icons'
-import UpdateDialog from '../../../components/ProjectManager/FromLists/updateDialog'
+import UpdateFromDialog from '../../../components/ProjectManager/FromLists/UpdateFromDialog'
 
 const FromList = () => {
 
@@ -66,7 +66,7 @@ const FromList = () => {
 
 
 </div>
-<UpdateDialog open={open} close={()=>setOpen(!open)}/>
+<UpdateFromDialog open={open} close={()=>setOpen(!open)}/>
     </>
   )
 }
