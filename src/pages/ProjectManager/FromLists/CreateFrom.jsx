@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import Nav from '../../../components/Sidebar/Nav'
 import { Button, Card, Container, Form } from 'react-bootstrap'
 import { api} from '../../../utilities/api/apiResource'
+import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
 
 const CreateFrom = () => {
 
@@ -11,7 +13,8 @@ const CreateFrom = () => {
     const approveByRef = useRef(null);
     const checkByRef = useRef(null);
     const prepareByRef = useRef(null);
-    
+    const nav = useNavigate();
+
     const getRoles = async ()=>{
         const res = await api.get('roles')
         setRoles(res.data)
@@ -34,7 +37,17 @@ const CreateFrom = () => {
         }
         api.post('form/create',data)
         .then((res)=>
-        console.log(res.data))
+            res.status === 201 && 
+            swal('Excellent','You created successfully!','success')
+            .then(()=>
+            nav('/from_lists'))
+            )
+    
+        .catch((err)=>
+
+            err.response.status === 422 &&
+            swal('Validation','You need to Fill all the fields','error'))
+        
     }
 
   return (
