@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { api } from '../../utilities/api/apiResource';
 import swal from 'sweetalert';
-import { Badge } from 'react-bootstrap';
-import { error } from 'jquery';
+
 
 
 const Form = styled.form`
@@ -88,13 +87,9 @@ const ProductCheckDialog = ({open,close,isRequired,list}) => {
     }
              <div className="text-center mt-5">
     {
-        
-             list.isIssued   == 1 ? <h4><Badge bg='success' size='md'>Material Issue Done!</Badge></h4> :
              isRequired == false  &&   <button className='btn btn-success' onClick={handleIssue}>Material Issue</button>
     }     
-    {       list.isRequested   == 1 ? 
-                       <h4><Badge bg='success' size='md'>Request Done!</Badge></h4> 
-                      :
+    {     
             isRequired == true  &&   <Link to={'/warehouse_purchase_request/'+list.id} state={{data:requiredItems,projects:[list.project_id , list.project_phase_id]}}>
                       <button className='btn btn-danger'>Purchase Request</button>
                       </Link>
