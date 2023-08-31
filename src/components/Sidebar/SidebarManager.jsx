@@ -21,7 +21,7 @@ const SidebarManager = ({displaySidebar}) => {
   return (
    <>
    <ItemContainer>
-          <Link className="no_underline" to="/from_lists">
+          <Link className="no_underline" to="/form_lists">
             <ItemWrapper>
               <CostCenterIcon />
               <ItemName displaySidebar={displaySidebar}>From Lists</ItemName>
