@@ -8,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../../utilities/api/apiResource';
 import swal from 'sweetalert';
 import { Badge } from 'react-bootstrap';
+import { error } from 'jquery';
 
 
 const Form = styled.form`
@@ -16,18 +17,21 @@ flex-direction: column;
 `
 
 const ProductCheckDialog = ({open,close,isRequired,list}) => {
-
-    const nav = useNavigate()
-
+ 
     const requiredItems= list.products?.filter((product)=>product.required_quantity > 0 )
  
-    const handleIssue= async(e)=>{
+    const handleIssue= (e)=>{
 
         e.preventDefault()
       
-        const res = await api.get('materialIssue/save/'+list.id)
-
-        swal('Success',res.data.succes,'success').then(()=> nav('/request_material_list'))
+       api.get('materialIssue/save/'+list.id)
+        .then((res)=>
+       swal('Success',res.data.success,'success') )
+        .then(()=>
+        window.location.reload())
+        .catch((err)=>
+        console.error(err))
+     
     }
    
   return (

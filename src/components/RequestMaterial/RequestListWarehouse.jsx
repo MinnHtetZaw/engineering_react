@@ -7,7 +7,7 @@ const RequestListWarehouse = ({materials}) => {
   const lists = materials.filter((material)=>material.isApproved == 'Approved')
 
   const [show,setShow] = useState(false)
-  const [isRequired,setIsRequired] = useState(false)
+  const [isRequired,setIsRequired] = useState(null)
  
 
   const [list,setList] = useState({})
@@ -15,14 +15,14 @@ const RequestListWarehouse = ({materials}) => {
   const handleDialog =(val)=>{
     setList(val)
     setShow(!show)
-    setIsRequired( val.products.filter(el=>el.required_quantity === 0  ? false : true))
+    val.products.filter(el=>el.required_quantity == 0  ?setIsRequired(false) : setIsRequired(true) )
 
   }
 
   return (
     <>
     <div className='flex'>
-            <h5 className="col-10 fw-normal text-secondary fb">Request Material List</h5>
+            <h5 className="col-10 fw-normal text-secondary">Request Material List</h5>
           
       </div>
       

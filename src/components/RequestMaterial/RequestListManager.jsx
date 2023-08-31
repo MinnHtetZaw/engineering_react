@@ -52,8 +52,25 @@ const RequestListManager = ({materials}) => {
            
                                         <td className="bod-li">{material.reason ?? "-"}</td>
                                         <td className="bod-li">
-                                          <span className='badge bg-danger'>{material.isApproved}
-                                            </span></td>
+                                            {
+                                                material.isApproved === "Approved" && (
+                                                    <span className='badge bg-success'>{material.isApproved}
+                                                    </span>
+                                                )
+                                            }
+                                            {
+                                                material.isApproved === "Declined" && (
+                                                    <span className='badge bg-danger'>{material.isApproved}
+                                                    </span>
+                                                )
+                                            }
+                                              {
+                                                material.isApproved === "Pending" && (
+                                                    <span className='badge bg-warning'>{material.isApproved}
+                                                    </span>
+                                                )
+                                            }
+                                         </td>
                                         
                                         <td className="bod-li">{material.from_employee ?? "-"}</td>
                         
