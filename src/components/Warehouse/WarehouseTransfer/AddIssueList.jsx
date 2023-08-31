@@ -8,7 +8,7 @@ const AddIssueList = () => {
 
     const issueList = useSelector(state=>state.issue.issueList)
     const dipatch = useDispatch()
-    
+
   return (
  
     <div className='col-md-6 my-3'>

@@ -40,11 +40,14 @@ const   CreateWarehouseTransfer = () => {
       const filteredProject =  regWarehouses.filter((el)=>el.id == val)
 
             setRegWareId(val)
-            setProject(filteredProject[0].project)
 
-            api.get('regional_warehouse/project/'+filteredProject[0].project.id)
-            .then((res)=>
-            setPhases(res.data.data))
+            if(filteredProject[0].project){
+                setProject(filteredProject[0].project)
+
+                api.get('regional_warehouse/project/'+filteredProject[0].project.id)
+                .then((res)=>
+                setPhases(res.data.data))
+            }      
     }
 
     const selectPhase = async (value)=>{

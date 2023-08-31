@@ -5,8 +5,15 @@ import { useDispatch } from 'react-redux'
 import { addIssue } from '../../../utilities/redux/issueRedux'
 
 const IssuesList = ({issues,contact_person}) => {
-
+    
     const dispatch = useDispatch()
+
+    const handleAddIssue =(issue,person)=>{
+        
+        const issueList= {...issue};
+        issueList.contact_person = person;
+        dispatch(addIssue(issueList))
+    }
     
   return (
     <div className='col-md-6'>
@@ -29,7 +36,7 @@ const IssuesList = ({issues,contact_person}) => {
                                     <td>{contact_person}</td>
                                     <td>{issue.total_qty}</td>
                                     <td>
-                                        <Button variant='primary' size='sm' onClick={()=>dispatch(addIssue({issue,contact_person}))}>
+                                        <Button variant='primary' size='sm' onClick={()=>handleAddIssue(issue,contact_person)}>
                                         <AddIcon fontSize='sm'/> Add
                                         </Button>
                                     </td>

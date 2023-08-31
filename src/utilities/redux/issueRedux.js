@@ -7,10 +7,9 @@ const issueSlice = createSlice({
     },
     reducers: {
         addIssue: (state, action) => {
-        
-            action.payload.issue['contact_person']=action.payload.contact_person;
-            state.issueList.push(action.payload.issue);
-            
+
+            state.issueList.push(action.payload);
+       
         },
         removeIssue: (state, action) => {
 
