@@ -1,17 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Card, Table } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Nav from '../../../components/Sidebar/Nav'
 import { Plus, Wrench } from '../../../components/Icons'
-import UpdateFromDialog from '../../../components/ProjectManager/FromLists/UpdateFromDialog'
+import { api } from '../../../utilities/api/apiResource'
+import UpdateFormDialog from '../../../components/ProjectManager/FromLists/UpdateFormDialog'
 
 const FromList = () => {
 
     const [open,setOpen] = useState(false)
+    const [formLists,setFormLists]=useState([])
+    const [singleList,setSingleList]= useState({})
 
-    const handleUpdate=()=>{
+    useEffect(()=>{
+      const getFormLists = async()=>{
+        const res = await api.get('form/lists')
+        setFormLists(res.data.data)
+      }
+      getFormLists()
+    },[])
+
+
+    const handleUpdate=(val)=>{
+        setSingleList(val)
         setOpen(!open)
     }
+
+
   return (
     <>
     <Nav/>
@@ -28,7 +43,7 @@ const FromList = () => {
             <Card.Body>
            
               <Table bordered striped>
-                <thead className="text-center">
+                <thead className="text-center bg-secondary text-white"> 
                 	<tr>
                         <th>No</th>
                         <th>Form Name</th>
@@ -42,19 +57,24 @@ const FromList = () => {
                 </thead>
              
                 <tbody className="text-center">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td className="text-danger"></td>
-                        <td className="text-info"></td>
-                        <td className="text-success"></td>
-                        <td className=""></td>
-                        <td></td>
+                  {
+                    formLists.map((list,index)=>(
+                      <tr key={index}>
+                        <td>{++index}</td>
+                        <td>{list.form_name}</td>
+                        <td className="text-danger">{list.approve_by_role}</td>
+                        <td className="text-info">{list.check_by_role}</td>
+                        <td className="text-success">{list.prepare_by_role}</td>
+                        <td className="">{list.index_digit}</td>
+                        <td>{list.prefix}</td>
                         <td>
-                        <Button variant='success' size='sm' onClick={handleUpdate}><Wrench fontSize='sm'/>  Update</Button>
-                    </td>
+                        <Button variant='success' size='sm' onClick={()=>handleUpdate(list)}><Wrench fontSize='sm'/>  Update</Button>
+                        </td>
 
-                    </tr>
+                      </tr>
+                    ))
+                  }
+                   
                
                 </tbody>
                
@@ -66,7 +86,7 @@ const FromList = () => {
 
 
 </div>
-<UpdateFromDialog open={open} close={()=>setOpen(!open)}/>
+<UpdateFormDialog open={open} close={()=>setOpen(!open)} singleList={singleList}/>
     </>
   )
 }

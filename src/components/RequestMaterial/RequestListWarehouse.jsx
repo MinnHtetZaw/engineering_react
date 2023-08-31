@@ -1,28 +1,32 @@
 import React, { useState } from 'react'
 import { EyeIcon } from '../Icons'
 import ProductCheckDialog from './ProductCheckDialog'
+import ProductDialog from './ProductDialog'
 
 const RequestListWarehouse = ({materials}) => {
 
   const lists = materials.filter((material)=>material.isApproved == 'Approved')
 
   const [show,setShow] = useState(false)
-  const [isRequired,setIsRequired] = useState(false)
- 
-
+  const [isRequired,setIsRequired] = useState(null)
   const [list,setList] = useState({})
 
   const handleDialog =(val)=>{
     setList(val)
     setShow(!show)
-    setIsRequired( val.products.filter(el=>el.required_quantity === 0  ? false : true))
+   
+    if(val.isIssued == 0 && val.isRequested == 0 )
+    {
+      val.products.filter(el=>  el.required_quantity == 0  ? setIsRequired(false) : setIsRequired(true) )
+    } 
+   
 
   }
 
   return (
     <>
     <div className='flex'>
-            <h5 className="col-10 fw-normal text-secondary fb">Request Material List</h5>
+            <h5 className="col-10 fw-normal text-secondary">Request Material List</h5>
           
       </div>
       
@@ -80,9 +84,14 @@ const RequestListWarehouse = ({materials}) => {
                 </div>
             </div>
         </div>
-       <ProductCheckDialog open={show} close={()=>setShow(!show)} 
-                         isRequired={isRequired} 
-                    list={list}/>
+        {
+          list.isIssued || list.isRequested == 1 ? 
+          <ProductDialog open={show} close={()=>setShow(!show)}  list={list} /> : 
+          
+          <ProductCheckDialog open={show} close={()=>setShow(!show)} 
+                              isRequired={isRequired}   list={list}/>
+        }
+      
     </>
   )
 }

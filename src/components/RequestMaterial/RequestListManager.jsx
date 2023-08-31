@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
 import { EyeIcon } from '../Icons'
 import ProductlistDialog from './ProductlistDialog'
-import { api } from '../../utilities/api/apiResource'
-import swal from 'sweetalert'
 
 const RequestListManager = ({materials}) => {
   const [show,setShow] = useState(false)
-  const [products,setProducts]=useState([])
-  const [material_id,setMaterialId]=useState(null)
+  const [material,setMaterial]=useState({})
 
-  const handleDialog =(val,id)=>{
+  const handleDialog =(val)=>{
 
-    setMaterialId(id)
+    setMaterial(val)
     setShow(!show)
-    setProducts(val)
   }
 
   return (
@@ -54,14 +50,31 @@ const RequestListManager = ({materials}) => {
            
                                         <td className="bod-li">{material.reason ?? "-"}</td>
                                         <td className="bod-li">
-                                          <span className='badge bg-danger'>{material.isApproved}
-                                            </span></td>
+                                            {
+                                                material.isApproved === "Approved" && (
+                                                    <span className='badge bg-success'>{material.isApproved}
+                                                    </span>
+                                                )
+                                            }
+                                            {
+                                                material.isApproved === "Declined" && (
+                                                    <span className='badge bg-danger'>{material.isApproved}
+                                                    </span>
+                                                )
+                                            }
+                                              {
+                                                material.isApproved === "Pending" && (
+                                                    <span className='badge bg-warning'>{material.isApproved}
+                                                    </span>
+                                                )
+                                            }
+                                         </td>
                                         
                                         <td className="bod-li">{material.from_employee ?? "-"}</td>
                         
                                           
                                         <td className="bod-li">
-                                            <EyeIcon onClick={()=>handleDialog(material.products,material.id)} />
+                                            <EyeIcon onClick={()=>handleDialog(material)} />
                                             
                                         </td>
                                     </tr>
@@ -77,7 +90,7 @@ const RequestListManager = ({materials}) => {
                 </div>
             </div>
         </div>
-       <ProductlistDialog open={show} close={()=>setShow(!show)} products={products} id={material_id} />
+       <ProductlistDialog open={show} close={()=>setShow(!show)} material={material} />
     </>
   )
 }

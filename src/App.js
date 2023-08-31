@@ -140,7 +140,7 @@ function App() {
 
       <Route path="/regional/good_receive_notes" element={<GoodReceiveNotesList/>} />
       <Route path="/regional/inventory" element={<RegionalInventory/>} />
-      <Route path="/from_lists" element={<FromList/>}/>
+      <Route path="/form_lists" element={<FromList/>}/>
       <Route path="/create_from" element={<CreateFrom/>}/>
        {dummyData &&
          dummyData.map((item, index) => (
