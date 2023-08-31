@@ -60,7 +60,7 @@ const   CreateWarehouseTransfer = () => {
      setWtoNo(res.data)
     }
 
-    const handleSend =(e)=>{
+    const handleSend = (e)=>{
         e.preventDefault()
 
         if(wtoNo == null)
@@ -74,13 +74,13 @@ const   CreateWarehouseTransfer = () => {
                 wto_no: wtoNo,
                 regional_warehouse_id:regWareId
             }
+         
                 api.post('warehouse_transfer/create',data)
                 .then((res)=> 
-                    swal('Good',res.data.success,'success')
-                    .then(()=>dispatch(resetIssue())
-                         .then(()=>nav('/warehouse_transfer/list'))
-                    ))
-                   
+                    swal('Good',res.data.success,'success'))
+                .then(()=>dispatch(resetIssue()))
+                .then(()=>nav('/warehouse_transfer/list'))
+
                 .catch((error)=>
                 swal('Error','Something Went Wrong...!','error'))    
         }

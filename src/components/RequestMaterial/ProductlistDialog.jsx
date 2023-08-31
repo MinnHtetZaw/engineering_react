@@ -15,7 +15,7 @@ display: flex;
 flex-direction: column;
 `
 
-const ProductlistDialog = ({open,close,products,id}) => {
+const ProductlistDialog = ({open,close,material}) => {
     
     const nav = useNavigate()
 
@@ -23,14 +23,14 @@ const ProductlistDialog = ({open,close,products,id}) => {
     const Approve =(e)=>{
        e.preventDefault()
        api.post('request_material_status',{
-           request_id:id,
+           request_id:material.id,
            isApproved : 1
          })
        
          .then(()=>
          swal('Approve','Request is Approved Successfully','success'))
         .then(()=>
-        nav('/request_material_list'))
+        window.location.reload())
          
 
        }
@@ -39,14 +39,14 @@ const ProductlistDialog = ({open,close,products,id}) => {
        e.preventDefault()
         
        api.post('request_material_status',{
-           request_id:id,
+           request_id:material.id,
            isApproved : 2
          })
          .then(()=>
          swal('Decline','Request is Declinced Successfully','success'))
          
-         .then(()=> 
-         nav('/request_material_list'))
+         .then(()=>
+         window.location.reload())
       
        
        }
@@ -75,7 +75,7 @@ const ProductlistDialog = ({open,close,products,id}) => {
                 </div>
         </div>
     {
-        products.map((product,index)=>(
+        material.products?.map((product,index)=>(
        
             <div className="row mb-1 mt-3 text-center fw-bold" key={index}>
                 <div className="col-md-1">
@@ -99,13 +99,16 @@ const ProductlistDialog = ({open,close,products,id}) => {
         ))
     }
 
-             <div className="text-end mt-5">
- 
-          <button className='btn btn-success me-2' onClick={Approve}>Approve</button>
-           <button className='btn btn-danger' onClick={Decline}>Decline</button>
-  
- 
- </div>                   
+            {
+                material.isApproved === "Pending" && (
+                    
+                    <div className="text-end mt-5">
+                        <button className='btn btn-success me-2' onClick={Approve}>Approve</button>
+                        <button className='btn btn-danger' onClick={Decline}>Decline</button>
+                    </div>   
+                )
+            }
+                           
   </Form>
 </DialogContent>
 <DialogActions>
